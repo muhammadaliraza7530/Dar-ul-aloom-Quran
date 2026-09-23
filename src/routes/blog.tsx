@@ -6,9 +6,9 @@ import { useLanguage } from "@/components/academy-layout";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Quran Learning Blog | Dar-ul-Uloom Online Quran Academy" },
+      { title: "Quran Learning Blog | Dar ul Uloom Online Quran Academy & Islamic Center" },
       { name: "description", content: "Articles on Tajweed, Hifz planning and helping children build a lasting love for the Quran." },
-      { property: "og:title", content: "Quran Learning Blog | Dar-ul-Uloom" },
+      { property: "og:title", content: "Quran Learning Blog | Dar ul Uloom Online Quran Academy & Islamic Center" },
       { property: "og:description", content: "Guidance on Tajweed, Hifz and teaching children the Quran." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

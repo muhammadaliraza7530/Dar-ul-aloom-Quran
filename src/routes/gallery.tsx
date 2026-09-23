@@ -8,9 +8,9 @@ import { galleryPhotos, galleryVideos } from "@/lib/gallery";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Classes, Students & Teachers | Dar-ul-Uloom" },
-      { name: "description", content: "Photos and videos from our online Quran classes: students, teachers, Tajweed practice and memorization sessions at Dar-ul-Uloom Online Quran Academy." },
-      { property: "og:title", content: "Gallery — Classes, Students & Teachers | Dar-ul-Uloom" },
+      { title: "Gallery — Classes, Students & Teachers | Dar ul Uloom Online Quran Academy & Islamic Center" },
+      { name: "description", content: "Photos and videos from our online Quran classes: students, teachers, Tajweed practice and memorization sessions at Dar ul Uloom Online Quran Academy & Islamic Center." },
+      { property: "og:title", content: "Gallery — Classes, Students & Teachers | Dar ul Uloom Online Quran Academy & Islamic Center" },
       { property: "og:description", content: "See our online Quran classes in photos and videos." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

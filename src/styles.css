@@ -4,6 +4,22 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq Kasheeda';
+  src: url('https://cdn.jsdelivr.net/gh/haideralishah/urdu-webfonts@master/fonts/JameelNooriNastaleeqKasheeda/JameelNooriNastaleeqKasheeda.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  src: url('https://cdn.jsdelivr.net/gh/haideralishah/urdu-webfonts@master/fonts/JameelNooriNastaleeq/JameelNooriNastaleeq.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /*
  * Design system definition.
  *
@@ -21,7 +37,7 @@
 @theme inline {
   --font-sans: "Fira Sans", sans-serif;
   --font-display: "DM Serif Display", serif;
-  --font-urdu: "Noto Nastaliq Urdu", serif;
+  --font-urdu: "Jameel Noori Nastaleeq Kasheeda", "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

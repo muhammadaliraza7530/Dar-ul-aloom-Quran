@@ -22,8 +22,27 @@ import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as TeachersRouteImport } from './routes/teachers'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAdmissionFormRouteImport } from './routes/_authenticated/admission-form'
+import { Route as AuthenticatedParentRouteImport } from './routes/_authenticated/parent'
+import { Route as AuthenticatedPendingRouteImport } from './routes/_authenticated/pending'
 import { Route as AuthenticatedPortalRouteImport } from './routes/_authenticated/portal'
 import { Route as CourseSlugRouteImport } from './routes/course.$slug'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as AuthenticatedAdminAttendanceRouteImport } from './routes/_authenticated/admin/attendance'
+import { Route as AuthenticatedAdminFeesRouteImport } from './routes/_authenticated/admin/fees'
+import { Route as AuthenticatedAdminLessonsRouteImport } from './routes/_authenticated/admin/lessons'
+import { Route as AuthenticatedAdminRemarksRouteImport } from './routes/_authenticated/admin/remarks'
+import { Route as AuthenticatedAdminStudentsRouteImport } from './routes/_authenticated/admin/students'
+import { Route as AuthenticatedPortalIndexRouteImport } from './routes/_authenticated/portal/index'
+import { Route as AuthenticatedPortalAnnouncementsRouteImport } from './routes/_authenticated/portal/announcements'
+import { Route as AuthenticatedPortalAttendanceRouteImport } from './routes/_authenticated/portal/attendance'
+import { Route as AuthenticatedPortalCoursesRouteImport } from './routes/_authenticated/portal/courses'
+import { Route as AuthenticatedPortalFeesRouteImport } from './routes/_authenticated/portal/fees'
+import { Route as AuthenticatedPortalLessonsRouteImport } from './routes/_authenticated/portal/lessons'
+import { Route as AuthenticatedPortalMaterialsRouteImport } from './routes/_authenticated/portal/materials'
+import { Route as AuthenticatedPortalProfileRouteImport } from './routes/_authenticated/portal/profile'
+import { Route as AuthenticatedPortalProgressRouteImport } from './routes/_authenticated/portal/progress'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -89,6 +108,27 @@ const TeachersRoute = TeachersRouteImport.update({
   path: '/teachers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdmissionFormRoute =
+  AuthenticatedAdmissionFormRouteImport.update({
+    id: '/admission-form',
+    path: '/admission-form',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedParentRoute = AuthenticatedParentRouteImport.update({
+  id: '/parent',
+  path: '/parent',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPendingRoute = AuthenticatedPendingRouteImport.update({
+  id: '/pending',
+  path: '/pending',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedPortalRoute = AuthenticatedPortalRouteImport.update({
   id: '/portal',
   path: '/portal',
@@ -99,6 +139,93 @@ const CourseSlugRoute = CourseSlugRouteImport.update({
   path: '/course/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminAttendanceRoute =
+  AuthenticatedAdminAttendanceRouteImport.update({
+    id: '/attendance',
+    path: '/attendance',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminFeesRoute = AuthenticatedAdminFeesRouteImport.update({
+  id: '/fees',
+  path: '/fees',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminLessonsRoute =
+  AuthenticatedAdminLessonsRouteImport.update({
+    id: '/lessons',
+    path: '/lessons',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminRemarksRoute =
+  AuthenticatedAdminRemarksRouteImport.update({
+    id: '/remarks',
+    path: '/remarks',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminStudentsRoute =
+  AuthenticatedAdminStudentsRouteImport.update({
+    id: '/students',
+    path: '/students',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedPortalIndexRoute =
+  AuthenticatedPortalIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedPortalRoute,
+  } as any)
+const AuthenticatedPortalAnnouncementsRoute =
+  AuthenticatedPortalAnnouncementsRouteImport.update({
+    id: '/announcements',
+    path: '/announcements',
+    getParentRoute: () => AuthenticatedPortalRoute,
+  } as any)
+const AuthenticatedPortalAttendanceRoute =
+  AuthenticatedPortalAttendanceRouteImport.update({
+    id: '/attendance',
+    path: '/attendance',
+    getParentRoute: () => AuthenticatedPortalRoute,
+  } as any)
+const AuthenticatedPortalCoursesRoute =
+  AuthenticatedPortalCoursesRouteImport.update({
+    id: '/courses',
+    path: '/courses',
+    getParentRoute: () => AuthenticatedPortalRoute,
+  } as any)
+const AuthenticatedPortalFeesRoute = AuthenticatedPortalFeesRouteImport.update({
+  id: '/fees',
+  path: '/fees',
+  getParentRoute: () => AuthenticatedPortalRoute,
+} as any)
+const AuthenticatedPortalLessonsRoute =
+  AuthenticatedPortalLessonsRouteImport.update({
+    id: '/lessons',
+    path: '/lessons',
+    getParentRoute: () => AuthenticatedPortalRoute,
+  } as any)
+const AuthenticatedPortalMaterialsRoute =
+  AuthenticatedPortalMaterialsRouteImport.update({
+    id: '/materials',
+    path: '/materials',
+    getParentRoute: () => AuthenticatedPortalRoute,
+  } as any)
+const AuthenticatedPortalProfileRoute =
+  AuthenticatedPortalProfileRouteImport.update({
+    id: '/profile',
+    path: '/profile',
+    getParentRoute: () => AuthenticatedPortalRoute,
+  } as any)
+const AuthenticatedPortalProgressRoute =
+  AuthenticatedPortalProgressRouteImport.update({
+    id: '/progress',
+    path: '/progress',
+    getParentRoute: () => AuthenticatedPortalRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -113,8 +240,27 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
   '/teachers': typeof TeachersRoute
-  '/portal': typeof AuthenticatedPortalRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/admission-form': typeof AuthenticatedAdmissionFormRoute
+  '/parent': typeof AuthenticatedParentRoute
+  '/pending': typeof AuthenticatedPendingRoute
+  '/portal': typeof AuthenticatedPortalRouteWithChildren
   '/course/$slug': typeof CourseSlugRoute
+  '/admin/attendance': typeof AuthenticatedAdminAttendanceRoute
+  '/admin/fees': typeof AuthenticatedAdminFeesRoute
+  '/admin/lessons': typeof AuthenticatedAdminLessonsRoute
+  '/admin/remarks': typeof AuthenticatedAdminRemarksRoute
+  '/admin/students': typeof AuthenticatedAdminStudentsRoute
+  '/portal/announcements': typeof AuthenticatedPortalAnnouncementsRoute
+  '/portal/attendance': typeof AuthenticatedPortalAttendanceRoute
+  '/portal/courses': typeof AuthenticatedPortalCoursesRoute
+  '/portal/fees': typeof AuthenticatedPortalFeesRoute
+  '/portal/lessons': typeof AuthenticatedPortalLessonsRoute
+  '/portal/materials': typeof AuthenticatedPortalMaterialsRoute
+  '/portal/profile': typeof AuthenticatedPortalProfileRoute
+  '/portal/progress': typeof AuthenticatedPortalProgressRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/portal/': typeof AuthenticatedPortalIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -129,8 +275,25 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
   '/teachers': typeof TeachersRoute
-  '/portal': typeof AuthenticatedPortalRoute
+  '/admission-form': typeof AuthenticatedAdmissionFormRoute
+  '/parent': typeof AuthenticatedParentRoute
+  '/pending': typeof AuthenticatedPendingRoute
   '/course/$slug': typeof CourseSlugRoute
+  '/admin/attendance': typeof AuthenticatedAdminAttendanceRoute
+  '/admin/fees': typeof AuthenticatedAdminFeesRoute
+  '/admin/lessons': typeof AuthenticatedAdminLessonsRoute
+  '/admin/remarks': typeof AuthenticatedAdminRemarksRoute
+  '/admin/students': typeof AuthenticatedAdminStudentsRoute
+  '/portal/announcements': typeof AuthenticatedPortalAnnouncementsRoute
+  '/portal/attendance': typeof AuthenticatedPortalAttendanceRoute
+  '/portal/courses': typeof AuthenticatedPortalCoursesRoute
+  '/portal/fees': typeof AuthenticatedPortalFeesRoute
+  '/portal/lessons': typeof AuthenticatedPortalLessonsRoute
+  '/portal/materials': typeof AuthenticatedPortalMaterialsRoute
+  '/portal/profile': typeof AuthenticatedPortalProfileRoute
+  '/portal/progress': typeof AuthenticatedPortalProgressRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/portal': typeof AuthenticatedPortalIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -147,8 +310,27 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
   '/teachers': typeof TeachersRoute
-  '/_authenticated/portal': typeof AuthenticatedPortalRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/admission-form': typeof AuthenticatedAdmissionFormRoute
+  '/_authenticated/parent': typeof AuthenticatedParentRoute
+  '/_authenticated/pending': typeof AuthenticatedPendingRoute
+  '/_authenticated/portal': typeof AuthenticatedPortalRouteWithChildren
   '/course/$slug': typeof CourseSlugRoute
+  '/_authenticated/admin/attendance': typeof AuthenticatedAdminAttendanceRoute
+  '/_authenticated/admin/fees': typeof AuthenticatedAdminFeesRoute
+  '/_authenticated/admin/lessons': typeof AuthenticatedAdminLessonsRoute
+  '/_authenticated/admin/remarks': typeof AuthenticatedAdminRemarksRoute
+  '/_authenticated/admin/students': typeof AuthenticatedAdminStudentsRoute
+  '/_authenticated/portal/announcements': typeof AuthenticatedPortalAnnouncementsRoute
+  '/_authenticated/portal/attendance': typeof AuthenticatedPortalAttendanceRoute
+  '/_authenticated/portal/courses': typeof AuthenticatedPortalCoursesRoute
+  '/_authenticated/portal/fees': typeof AuthenticatedPortalFeesRoute
+  '/_authenticated/portal/lessons': typeof AuthenticatedPortalLessonsRoute
+  '/_authenticated/portal/materials': typeof AuthenticatedPortalMaterialsRoute
+  '/_authenticated/portal/profile': typeof AuthenticatedPortalProfileRoute
+  '/_authenticated/portal/progress': typeof AuthenticatedPortalProgressRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/portal/': typeof AuthenticatedPortalIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -165,8 +347,27 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/reset-password'
     | '/teachers'
+    | '/admin'
+    | '/admission-form'
+    | '/parent'
+    | '/pending'
     | '/portal'
     | '/course/$slug'
+    | '/admin/attendance'
+    | '/admin/fees'
+    | '/admin/lessons'
+    | '/admin/remarks'
+    | '/admin/students'
+    | '/portal/announcements'
+    | '/portal/attendance'
+    | '/portal/courses'
+    | '/portal/fees'
+    | '/portal/lessons'
+    | '/portal/materials'
+    | '/portal/profile'
+    | '/portal/progress'
+    | '/admin/'
+    | '/portal/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -181,8 +382,25 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/reset-password'
     | '/teachers'
-    | '/portal'
+    | '/admission-form'
+    | '/parent'
+    | '/pending'
     | '/course/$slug'
+    | '/admin/attendance'
+    | '/admin/fees'
+    | '/admin/lessons'
+    | '/admin/remarks'
+    | '/admin/students'
+    | '/portal/announcements'
+    | '/portal/attendance'
+    | '/portal/courses'
+    | '/portal/fees'
+    | '/portal/lessons'
+    | '/portal/materials'
+    | '/portal/profile'
+    | '/portal/progress'
+    | '/admin'
+    | '/portal'
   id:
     | '__root__'
     | '/'
@@ -198,8 +416,27 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/reset-password'
     | '/teachers'
+    | '/_authenticated/admin'
+    | '/_authenticated/admission-form'
+    | '/_authenticated/parent'
+    | '/_authenticated/pending'
     | '/_authenticated/portal'
     | '/course/$slug'
+    | '/_authenticated/admin/attendance'
+    | '/_authenticated/admin/fees'
+    | '/_authenticated/admin/lessons'
+    | '/_authenticated/admin/remarks'
+    | '/_authenticated/admin/students'
+    | '/_authenticated/portal/announcements'
+    | '/_authenticated/portal/attendance'
+    | '/_authenticated/portal/courses'
+    | '/_authenticated/portal/fees'
+    | '/_authenticated/portal/lessons'
+    | '/_authenticated/portal/materials'
+    | '/_authenticated/portal/profile'
+    | '/_authenticated/portal/progress'
+    | '/_authenticated/admin/'
+    | '/_authenticated/portal/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -312,6 +549,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TeachersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admission-form': {
+      id: '/_authenticated/admission-form'
+      path: '/admission-form'
+      fullPath: '/admission-form'
+      preLoaderRoute: typeof AuthenticatedAdmissionFormRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/parent': {
+      id: '/_authenticated/parent'
+      path: '/parent'
+      fullPath: '/parent'
+      preLoaderRoute: typeof AuthenticatedParentRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/pending': {
+      id: '/_authenticated/pending'
+      path: '/pending'
+      fullPath: '/pending'
+      preLoaderRoute: typeof AuthenticatedPendingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/portal': {
       id: '/_authenticated/portal'
       path: '/portal'
@@ -326,15 +591,176 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CourseSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/attendance': {
+      id: '/_authenticated/admin/attendance'
+      path: '/attendance'
+      fullPath: '/admin/attendance'
+      preLoaderRoute: typeof AuthenticatedAdminAttendanceRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/fees': {
+      id: '/_authenticated/admin/fees'
+      path: '/fees'
+      fullPath: '/admin/fees'
+      preLoaderRoute: typeof AuthenticatedAdminFeesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/lessons': {
+      id: '/_authenticated/admin/lessons'
+      path: '/lessons'
+      fullPath: '/admin/lessons'
+      preLoaderRoute: typeof AuthenticatedAdminLessonsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/remarks': {
+      id: '/_authenticated/admin/remarks'
+      path: '/remarks'
+      fullPath: '/admin/remarks'
+      preLoaderRoute: typeof AuthenticatedAdminRemarksRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/students': {
+      id: '/_authenticated/admin/students'
+      path: '/students'
+      fullPath: '/admin/students'
+      preLoaderRoute: typeof AuthenticatedAdminStudentsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/portal/': {
+      id: '/_authenticated/portal/'
+      path: '/'
+      fullPath: '/portal/'
+      preLoaderRoute: typeof AuthenticatedPortalIndexRouteImport
+      parentRoute: typeof AuthenticatedPortalRoute
+    }
+    '/_authenticated/portal/announcements': {
+      id: '/_authenticated/portal/announcements'
+      path: '/announcements'
+      fullPath: '/portal/announcements'
+      preLoaderRoute: typeof AuthenticatedPortalAnnouncementsRouteImport
+      parentRoute: typeof AuthenticatedPortalRoute
+    }
+    '/_authenticated/portal/attendance': {
+      id: '/_authenticated/portal/attendance'
+      path: '/attendance'
+      fullPath: '/portal/attendance'
+      preLoaderRoute: typeof AuthenticatedPortalAttendanceRouteImport
+      parentRoute: typeof AuthenticatedPortalRoute
+    }
+    '/_authenticated/portal/courses': {
+      id: '/_authenticated/portal/courses'
+      path: '/courses'
+      fullPath: '/portal/courses'
+      preLoaderRoute: typeof AuthenticatedPortalCoursesRouteImport
+      parentRoute: typeof AuthenticatedPortalRoute
+    }
+    '/_authenticated/portal/fees': {
+      id: '/_authenticated/portal/fees'
+      path: '/fees'
+      fullPath: '/portal/fees'
+      preLoaderRoute: typeof AuthenticatedPortalFeesRouteImport
+      parentRoute: typeof AuthenticatedPortalRoute
+    }
+    '/_authenticated/portal/lessons': {
+      id: '/_authenticated/portal/lessons'
+      path: '/lessons'
+      fullPath: '/portal/lessons'
+      preLoaderRoute: typeof AuthenticatedPortalLessonsRouteImport
+      parentRoute: typeof AuthenticatedPortalRoute
+    }
+    '/_authenticated/portal/materials': {
+      id: '/_authenticated/portal/materials'
+      path: '/materials'
+      fullPath: '/portal/materials'
+      preLoaderRoute: typeof AuthenticatedPortalMaterialsRouteImport
+      parentRoute: typeof AuthenticatedPortalRoute
+    }
+    '/_authenticated/portal/profile': {
+      id: '/_authenticated/portal/profile'
+      path: '/profile'
+      fullPath: '/portal/profile'
+      preLoaderRoute: typeof AuthenticatedPortalProfileRouteImport
+      parentRoute: typeof AuthenticatedPortalRoute
+    }
+    '/_authenticated/portal/progress': {
+      id: '/_authenticated/portal/progress'
+      path: '/progress'
+      fullPath: '/portal/progress'
+      preLoaderRoute: typeof AuthenticatedPortalProgressRouteImport
+      parentRoute: typeof AuthenticatedPortalRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminAttendanceRoute: typeof AuthenticatedAdminAttendanceRoute
+  AuthenticatedAdminFeesRoute: typeof AuthenticatedAdminFeesRoute
+  AuthenticatedAdminLessonsRoute: typeof AuthenticatedAdminLessonsRoute
+  AuthenticatedAdminRemarksRoute: typeof AuthenticatedAdminRemarksRoute
+  AuthenticatedAdminStudentsRoute: typeof AuthenticatedAdminStudentsRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminAttendanceRoute: AuthenticatedAdminAttendanceRoute,
+  AuthenticatedAdminFeesRoute: AuthenticatedAdminFeesRoute,
+  AuthenticatedAdminLessonsRoute: AuthenticatedAdminLessonsRoute,
+  AuthenticatedAdminRemarksRoute: AuthenticatedAdminRemarksRoute,
+  AuthenticatedAdminStudentsRoute: AuthenticatedAdminStudentsRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedPortalRouteChildren {
+  AuthenticatedPortalAnnouncementsRoute: typeof AuthenticatedPortalAnnouncementsRoute
+  AuthenticatedPortalAttendanceRoute: typeof AuthenticatedPortalAttendanceRoute
+  AuthenticatedPortalCoursesRoute: typeof AuthenticatedPortalCoursesRoute
+  AuthenticatedPortalFeesRoute: typeof AuthenticatedPortalFeesRoute
+  AuthenticatedPortalLessonsRoute: typeof AuthenticatedPortalLessonsRoute
+  AuthenticatedPortalMaterialsRoute: typeof AuthenticatedPortalMaterialsRoute
+  AuthenticatedPortalProfileRoute: typeof AuthenticatedPortalProfileRoute
+  AuthenticatedPortalProgressRoute: typeof AuthenticatedPortalProgressRoute
+  AuthenticatedPortalIndexRoute: typeof AuthenticatedPortalIndexRoute
+}
+
+const AuthenticatedPortalRouteChildren: AuthenticatedPortalRouteChildren = {
+  AuthenticatedPortalAnnouncementsRoute: AuthenticatedPortalAnnouncementsRoute,
+  AuthenticatedPortalAttendanceRoute: AuthenticatedPortalAttendanceRoute,
+  AuthenticatedPortalCoursesRoute: AuthenticatedPortalCoursesRoute,
+  AuthenticatedPortalFeesRoute: AuthenticatedPortalFeesRoute,
+  AuthenticatedPortalLessonsRoute: AuthenticatedPortalLessonsRoute,
+  AuthenticatedPortalMaterialsRoute: AuthenticatedPortalMaterialsRoute,
+  AuthenticatedPortalProfileRoute: AuthenticatedPortalProfileRoute,
+  AuthenticatedPortalProgressRoute: AuthenticatedPortalProgressRoute,
+  AuthenticatedPortalIndexRoute: AuthenticatedPortalIndexRoute,
+}
+
+const AuthenticatedPortalRouteWithChildren =
+  AuthenticatedPortalRoute._addFileChildren(AuthenticatedPortalRouteChildren)
+
 interface AuthenticatedRouteRouteChildren {
-  AuthenticatedPortalRoute: typeof AuthenticatedPortalRoute
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+  AuthenticatedAdmissionFormRoute: typeof AuthenticatedAdmissionFormRoute
+  AuthenticatedParentRoute: typeof AuthenticatedParentRoute
+  AuthenticatedPendingRoute: typeof AuthenticatedPendingRoute
+  AuthenticatedPortalRoute: typeof AuthenticatedPortalRouteWithChildren
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedPortalRoute: AuthenticatedPortalRoute,
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+  AuthenticatedAdmissionFormRoute: AuthenticatedAdmissionFormRoute,
+  AuthenticatedParentRoute: AuthenticatedParentRoute,
+  AuthenticatedPendingRoute: AuthenticatedPendingRoute,
+  AuthenticatedPortalRoute: AuthenticatedPortalRouteWithChildren,
 }
 
 const AuthenticatedRouteRouteWithChildren =

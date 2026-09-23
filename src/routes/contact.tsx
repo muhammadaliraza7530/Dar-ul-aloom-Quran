@@ -8,14 +8,14 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PageHero } from "@/components/page-parts";
 import { contact } from "@/lib/academy-content";
-import { supabase } from "@/integrations/supabase/client";
+import { sendEmailNotification } from "@/lib/email";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us | Dar-ul-Uloom Online Quran Academy" },
-      { name: "description", content: "Contact Dar-ul-Uloom Online Quran Academy by email or WhatsApp to ask about courses, timings and fees." },
-      { property: "og:title", content: "Contact Us | Dar-ul-Uloom Online Quran Academy" },
+      { title: "Contact Us | Dar ul Uloom Online Quran Academy & Islamic Center" },
+      { name: "description", content: "Contact Dar ul Uloom Online Quran Academy & Islamic Center by email or WhatsApp to ask about courses, timings and fees." },
+      { property: "og:title", content: "Contact Us | Dar ul Uloom Online Quran Academy & Islamic Center" },
       { property: "og:description", content: "Reach our team by email or WhatsApp for course details and timings." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -31,20 +31,38 @@ function ContactPage() {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
+    
     setBusy(true);
-    const { error } = await supabase.from("leads").insert({
-      kind: "contact",
-      full_name: String(data.get("full_name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      phone: String(data.get("phone") ?? ""),
-      message: String(data.get("message") ?? ""),
-    });
-    setBusy(false);
-    if (error) {
-      toast.error("We could not send your message. Please try WhatsApp.");
-      return;
+
+    const fullName = String(data.get("full_name") ?? "");
+    const email = String(data.get("email") ?? "");
+    const phone = String(data.get("phone") ?? "");
+    const message = String(data.get("message") ?? "");
+
+    // Build WhatsApp message
+    const waText = `*New Contact Message* ✉️\n\n` +
+      `*Name:* ${fullName}\n` +
+      `*Email:* ${email}\n` +
+      `*Phone/WhatsApp:* ${phone}\n\n` +
+      `*Message:* ${message}`;
+
+    const waUrl = `https://wa.me/923298503412?text=${encodeURIComponent(waText)}`;
+    
+    // Email Delivery (Backend)
+    try {
+      await sendEmailNotification({
+        type: "Contact",
+        details: { Name: fullName, Email: email, Phone: phone, Message: message }
+      });
+    } catch (e) {
+      console.error("Email notification failed:", e);
     }
-    toast.success("Thank you — we will reply soon.");
+
+    // Open WhatsApp link
+    window.open(waUrl, '_blank');
+
+    toast.success("Message prepared! Opening WhatsApp...");
+    setBusy(false);
     form.reset();
   }
 

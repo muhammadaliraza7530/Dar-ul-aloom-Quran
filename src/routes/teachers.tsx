@@ -9,9 +9,9 @@ const teacherPhoto = "/media/maulana-yasir-muhammadi.jpeg";
 export const Route = createFileRoute("/teachers")({
   head: () => ({
     meta: [
-      { title: "Our Quran Teachers | Dar-ul-Uloom Academy" },
-      { name: "description", content: "Meet Maulana Yasir Muhammadi, founder and Quran instructor, and learn about the qualified male and female teachers at Dar-ul-Uloom Online Quran Academy." },
-      { property: "og:title", content: "Our Quran Teachers | Dar-ul-Uloom" },
+      { title: "Our Quran Teachers | Dar ul Uloom Online Quran Academy & Islamic Center Quran Academy & Islamic Center" },
+      { name: "description", content: "Meet Maulana Yasir Muhammadi, founder and Quran instructor, and learn about the qualified male and female teachers at Dar ul Uloom Online Quran Academy & Islamic Center." },
+      { property: "og:title", content: "Our Quran Teachers | Dar ul Uloom Online Quran Academy & Islamic Center" },
       { property: "og:description", content: "Qualified Quran teachers for personal online learning." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -58,7 +58,7 @@ function TeachersPage() {
                 <p className="flex gap-3"><Users className="size-5 shrink-0 text-gold-dark" />Male and female teachers available according to student needs.</p>
                 <p className="flex gap-3"><Award className="size-5 shrink-0 text-gold-dark" />Structured guidance in Quran reading, Tajweed, and Islamic studies.</p>
               </div>
-              <Button asChild variant="gold" className="mt-8"><Link to="/free-trial">Meet your teacher</Link></Button>
+              <Button asChild variant="gold" className="mt-8"><a href="https://wa.me/923298503412" target="_blank" rel="noreferrer">Meet your teacher</a></Button>
             </div>
           </article>
         </div>

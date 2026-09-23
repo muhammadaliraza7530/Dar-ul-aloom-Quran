@@ -5,7 +5,7 @@ import { useLanguage } from "@/components/academy-layout";
 
 export function PageHero({ title, urdu, description }: { title: string; urdu: string; description: string }) {
   const { language } = useLanguage();
-  return <section className="pattern-band border-b border-gold/25 bg-primary py-16 text-primary-foreground"><div className="mx-auto max-w-7xl px-4 sm:px-6"><p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-gold">Dar-ul-Uloom Online</p><h1 className="max-w-4xl font-display text-4xl leading-tight sm:text-5xl">{language === "ur" ? urdu : title}</h1><p className="mt-4 max-w-2xl text-base leading-7 text-primary-foreground/75">{description}</p></div></section>;
+  return <section className="pattern-band border-b border-gold/25 bg-primary py-16 text-primary-foreground"><div className="mx-auto max-w-7xl px-4 sm:px-6"><p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-gold">Dar ul Uloom Online Quran Academy & Islamic Center</p><h1 className="max-w-4xl font-display text-4xl leading-tight sm:text-5xl">{language === "ur" ? urdu : title}</h1><p className="mt-4 max-w-2xl text-base leading-7 text-primary-foreground/75">{description}</p></div></section>;
 }
 
 export function SectionHeading({ eyebrow, title, urdu, centered = true }: { eyebrow: string; title: string; urdu?: string; centered?: boolean }) {
@@ -15,7 +15,7 @@ export function SectionHeading({ eyebrow, title, urdu, centered = true }: { eyeb
 
 export function ConversionBand() {
   const { language } = useLanguage();
-  return <section className="pattern-band bg-primary py-12 text-primary-foreground"><div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 text-center sm:px-6 lg:flex-row lg:text-start"><div><h2 className="font-display text-3xl">{language === "ur" ? "آج ہی قرآن سیکھنے کا سفر شروع کریں" : "Start your Quran learning journey today"}</h2><p className="mt-2 text-primary-foreground/70">{language === "ur" ? "اپنی مفت آزمائشی کلاس بک کریں۔" : "Book your free trial class with a qualified teacher."}</p></div><div className="flex flex-wrap justify-center gap-3"><Button asChild variant="gold" size="lg"><Link to="/free-trial">{language === "ur" ? "مفت کلاس بک کریں" : "Book free trial"}</Link></Button><Button asChild variant="heroOutline" size="lg"><a href="https://wa.me/923298503412" target="_blank" rel="noreferrer"><MessageCircle />WhatsApp</a></Button></div></div></section>;
+  return <section className="pattern-band bg-primary py-12 text-primary-foreground"><div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 text-center sm:px-6 lg:flex-row lg:text-start"><div><h2 className="font-display text-3xl">{language === "ur" ? "آج ہی قرآن سیکھنے کا سفر شروع کریں" : "Start your Quran learning journey today"}</h2><p className="mt-2 text-primary-foreground/70">{language === "ur" ? "ہمیں واٹس ایپ پر پیغام بھیجیں۔" : "Contact us on WhatsApp to book your classes."}</p></div><div className="flex flex-wrap justify-center gap-3"><Button asChild variant="gold" size="lg"><a href="https://wa.me/923298503412" target="_blank" rel="noreferrer"><MessageCircle />WhatsApp</a></Button></div></div></section>;
 }
 
 export function FeatureList({ items }: { items: string[] }) {

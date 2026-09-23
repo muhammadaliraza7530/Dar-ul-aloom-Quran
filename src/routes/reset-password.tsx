@@ -11,9 +11,9 @@ export const Route = createFileRoute("/reset-password")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Set a new password | Dar-ul-Uloom Online Quran Academy" },
-      { name: "description", content: "Choose a new password for your Dar-ul-Uloom student portal account." },
-      { property: "og:title", content: "Set a new password | Dar-ul-Uloom" },
+      { title: "Set a new password | Dar ul Uloom Online Quran Academy & Islamic Center" },
+      { name: "description", content: "Choose a new password for your Dar ul Uloom Online Quran Academy & Islamic Center student portal account." },
+      { property: "og:title", content: "Set a new password | Dar ul Uloom Online Quran Academy & Islamic Center" },
       { property: "og:description", content: "Choose a new password for your student portal account." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

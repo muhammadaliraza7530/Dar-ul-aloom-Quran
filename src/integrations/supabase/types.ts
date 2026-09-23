@@ -7,8 +7,6 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instantiate createClient with right options
-  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
     PostgrestVersion: "14.5"
   }
@@ -32,6 +30,39 @@ export type Database = {
           created_at?: string
           id?: string
           title?: string
+        }
+        Relationships: []
+      }
+      attendance_records: {
+        Row: {
+          class_date: string
+          created_at: string
+          enrollment_id: string | null
+          id: string
+          notes: string
+          recorded_by: string | null
+          status: string
+          student_id: string
+        }
+        Insert: {
+          class_date?: string
+          created_at?: string
+          enrollment_id?: string | null
+          id?: string
+          notes?: string
+          recorded_by?: string | null
+          status?: string
+          student_id: string
+        }
+        Update: {
+          class_date?: string
+          created_at?: string
+          enrollment_id?: string | null
+          id?: string
+          notes?: string
+          recorded_by?: string | null
+          status?: string
+          student_id?: string
         }
         Relationships: []
       }
@@ -143,6 +174,57 @@ export type Database = {
         }
         Relationships: []
       }
+      lesson_records: {
+        Row: {
+          created_at: string
+          enrollment_id: string | null
+          homework: string
+          id: string
+          lesson_date: string
+          lesson_number: number | null
+          page_or_ayah: string
+          recorded_by: string | null
+          student_id: string
+          subject: string
+          surah_or_chapter: string
+          teacher_note: string
+          topic: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          enrollment_id?: string | null
+          homework?: string
+          id?: string
+          lesson_date?: string
+          lesson_number?: number | null
+          page_or_ayah?: string
+          recorded_by?: string | null
+          student_id: string
+          subject?: string
+          surah_or_chapter?: string
+          teacher_note?: string
+          topic?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          enrollment_id?: string | null
+          homework?: string
+          id?: string
+          lesson_date?: string
+          lesson_number?: number | null
+          page_or_ayah?: string
+          recorded_by?: string | null
+          student_id?: string
+          subject?: string
+          surah_or_chapter?: string
+          teacher_note?: string
+          topic?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       materials: {
         Row: {
           created_at: string
@@ -167,35 +249,80 @@ export type Database = {
         }
         Relationships: []
       }
+      parent_student_links: {
+        Row: {
+          created_at: string
+          id: string
+          parent_id: string
+          relation: string
+          student_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          parent_id: string
+          relation?: string
+          student_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          parent_id?: string
+          relation?: string
+          student_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
+          address: string
+          admission_status: string
+          avatar_url: string
           city: string
           country: string
           created_at: string
+          date_of_birth: string | null
           email: string
+          father_name: string
           full_name: string
+          gender: string
           id: string
           phone: string
+          student_id: string | null
           updated_at: string
         }
         Insert: {
+          address?: string
+          admission_status?: string
+          avatar_url?: string
           city?: string
           country?: string
           created_at?: string
+          date_of_birth?: string | null
           email?: string
+          father_name?: string
           full_name?: string
+          gender?: string
           id: string
           phone?: string
+          student_id?: string | null
           updated_at?: string
         }
         Update: {
+          address?: string
+          admission_status?: string
+          avatar_url?: string
           city?: string
           country?: string
           created_at?: string
+          date_of_birth?: string | null
           email?: string
+          father_name?: string
           full_name?: string
+          gender?: string
           id?: string
           phone?: string
+          student_id?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -227,6 +354,132 @@ export type Database = {
         }
         Relationships: []
       }
+      student_admissions: {
+        Row: {
+          address: string
+          admin_notes: string
+          city: string
+          country: string
+          course_interest: string
+          created_at: string
+          date_of_birth: string | null
+          email: string
+          father_name: string
+          full_name: string
+          gender: string
+          guardian_name: string
+          guardian_phone: string
+          guardian_relation: string
+          id: string
+          mother_name: string
+          phone: string
+          preferred_time: string
+          previous_education: string
+          rejection_reason: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+          submitted_at: string
+          updated_at: string
+          user_id: string
+          whatsapp: string
+        }
+        Insert: {
+          address?: string
+          admin_notes?: string
+          city?: string
+          country?: string
+          course_interest?: string
+          created_at?: string
+          date_of_birth?: string | null
+          email?: string
+          father_name?: string
+          full_name: string
+          gender?: string
+          guardian_name?: string
+          guardian_phone?: string
+          guardian_relation?: string
+          id?: string
+          mother_name?: string
+          phone?: string
+          preferred_time?: string
+          previous_education?: string
+          rejection_reason?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          submitted_at?: string
+          updated_at?: string
+          user_id: string
+          whatsapp?: string
+        }
+        Update: {
+          address?: string
+          admin_notes?: string
+          city?: string
+          country?: string
+          course_interest?: string
+          created_at?: string
+          date_of_birth?: string | null
+          email?: string
+          father_name?: string
+          full_name?: string
+          gender?: string
+          guardian_name?: string
+          guardian_phone?: string
+          guardian_relation?: string
+          id?: string
+          mother_name?: string
+          phone?: string
+          preferred_time?: string
+          previous_education?: string
+          rejection_reason?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          submitted_at?: string
+          updated_at?: string
+          user_id?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
+      teacher_remarks: {
+        Row: {
+          category: string
+          created_at: string
+          enrollment_id: string | null
+          id: string
+          rating: number | null
+          recorded_by: string | null
+          remark: string
+          remark_date: string
+          student_id: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          enrollment_id?: string | null
+          id?: string
+          rating?: number | null
+          recorded_by?: string | null
+          remark: string
+          remark_date?: string
+          student_id: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          enrollment_id?: string | null
+          id?: string
+          rating?: number | null
+          recorded_by?: string | null
+          remark?: string
+          remark_date?: string
+          student_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -253,6 +506,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      approve_student: {
+        Args: { p_user_id: string; p_admin_notes?: string }
+        Returns: string
+      }
+      reject_student: {
+        Args: { p_user_id: string; p_reason?: string }
+        Returns: undefined
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -262,7 +523,7 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "admin" | "student"
+      app_role: "admin" | "student" | "teacher" | "parent"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -271,7 +532,6 @@ export type Database = {
 }
 
 type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
-
 type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
 
 export type Tables<
@@ -370,27 +630,10 @@ export type Enums<
     ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
     : never
 
-export type CompositeTypes<
-  PublicCompositeTypeNameOrOptions extends
-    | keyof DefaultSchema["CompositeTypes"]
-    | { schema: keyof DatabaseWithoutInternals },
-  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals
-  }
-    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
-    : never) = never,
-> = PublicCompositeTypeNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals
-}
-  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
-  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
-    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
-    : never
-
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "student"],
+      app_role: ["admin", "student", "teacher", "parent"],
     },
   },
 } as const

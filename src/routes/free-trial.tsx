@@ -1,22 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Loader2 } from "lucide-react";
-import { toast } from "sonner";
+import { MessageCircle, Phone, Clock, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { PageHero } from "@/components/page-parts";
-import { courses } from "@/lib/academy-content";
-import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/components/academy-layout";
 
 export const Route = createFileRoute("/free-trial")({
   head: () => ({
     meta: [
-      { title: "Book a Free Trial Class | Dar-ul-Uloom Online Quran Academy" },
-      { name: "description", content: "Register for a free online Quran trial class with a qualified male or female teacher at a time that suits you." },
-      { property: "og:title", content: "Book a Free Trial Class | Dar-ul-Uloom" },
-      { property: "og:description", content: "Register for a free one-to-one online Quran trial class." },
+      { title: "Book a Free Trial Class | Dar ul Uloom Online Quran Academy & Islamic Center" },
+      { name: "description", content: "Book your free online Quran trial class. Contact us on WhatsApp to get started with a qualified male or female teacher." },
+      { property: "og:title", content: "Book a Free Trial Class | Dar ul Uloom Online Quran Academy & Islamic Center" },
+      { property: "og:description", content: "Contact us on WhatsApp to book your free one-to-one online Quran trial class." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -25,82 +19,101 @@ export const Route = createFileRoute("/free-trial")({
 });
 
 function FreeTrialPage() {
-  const [busy, setBusy] = useState(false);
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    setBusy(true);
-    const { error } = await supabase.from("leads").insert({
-      kind: "free_trial",
-      full_name: String(data.get("full_name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      phone: String(data.get("phone") ?? ""),
-      country: String(data.get("country") ?? ""),
-      course: String(data.get("course") ?? ""),
-      preferred_time: String(data.get("preferred_time") ?? ""),
-      message: String(data.get("message") ?? ""),
-    });
-    setBusy(false);
-    if (error) {
-      toast.error("We could not submit the form. Please try WhatsApp.");
-      return;
-    }
-    toast.success("Registration received — we will contact you to confirm your trial class.");
-    form.reset();
-  }
+  const { language } = useLanguage();
+  const ur = language === "ur";
 
   return (
     <>
-      <PageHero title="Book your free trial class" urdu="مفت آزمائشی کلاس" description="Three free trial classes, no payment required. Tell us what suits you and we will arrange a teacher." />
-      <section className="py-16">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6">
-          <form className="space-y-4 border border-border bg-card p-8 shadow-sm" onSubmit={handleSubmit}>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <Label htmlFor="full_name">Student name</Label>
-                <Input id="full_name" name="full_name" required maxLength={120} />
-              </div>
-              <div>
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" required maxLength={160} />
-              </div>
-              <div>
-                <Label htmlFor="phone">Phone / WhatsApp</Label>
-                <Input id="phone" name="phone" required maxLength={40} />
-              </div>
-              <div>
-                <Label htmlFor="country">Country</Label>
-                <Input id="country" name="country" maxLength={80} />
-              </div>
-            </div>
-            <div>
-              <Label htmlFor="course">Course</Label>
-              <select
-                id="course"
-                name="course"
-                required
-                className="mt-1 h-10 w-full border border-input bg-background px-3 text-sm"
-              >
-                {courses.map((course) => (
-                  <option key={course.slug} value={course.name}>{course.name}</option>
+      <PageHero
+        title="Book your free trial class"
+        urdu="مفت آزمائشی کلاس بک کریں"
+        description="Three free trial classes, no payment required. Contact us on WhatsApp to get started."
+      />
+      <section className="py-20">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+            {/* Left: Steps */}
+            <div className="space-y-6">
+              <h2 className="font-display text-3xl text-primary">
+                {ur ? "داخلے کا طریقہ" : "How to get started"}
+              </h2>
+              <div className="space-y-4">
+                {[
+                  {
+                    icon: MessageCircle,
+                    en: "Send us a WhatsApp message",
+                    ur: "واٹس ایپ پر میسج بھیجیں",
+                    desc_en: "Tell us your name, the course you are interested in, and your preferred timing.",
+                    desc_ur: "اپنا نام، کورس اور پسندیدہ وقت بتائیں۔",
+                  },
+                  {
+                    icon: GraduationCap,
+                    en: "We arrange your teacher",
+                    ur: "ہم آپ کا استاد مقرر کریں گے",
+                    desc_en: "We will match you with a qualified male or female teacher.",
+                    desc_ur: "ہم آپ کے لیے مناسب استاد ترتیب دیں گے۔",
+                  },
+                  {
+                    icon: Clock,
+                    en: "Start your 3 free trial classes",
+                    ur: "تین مفت آزمائشی کلاسز شروع کریں",
+                    desc_en: "No payment required. Experience the teaching before you commit.",
+                    desc_ur: "کوئی فیس نہیں۔ باقاعدہ داخلے سے پہلے تعلیم کا تجربہ لیں۔",
+                  },
+                ].map((step, i) => (
+                  <div key={i} className="flex gap-4 rounded-xl border border-border bg-card p-5 shadow-sm">
+                    <div className="rounded-2xl bg-gold/10 p-3 text-gold-dark ring-1 ring-gold/20 shrink-0">
+                      <step.icon className="size-6" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-primary">{ur ? step.ur : step.en}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{ur ? step.desc_ur : step.desc_en}</p>
+                    </div>
+                  </div>
                 ))}
-              </select>
+              </div>
             </div>
-            <div>
-              <Label htmlFor="preferred_time">Preferred time (with your time zone)</Label>
-              <Input id="preferred_time" name="preferred_time" maxLength={120} placeholder="e.g. 6pm UK time" />
+
+            {/* Right: Contact CTA */}
+            <div className="sticky top-24 space-y-4 rounded-xl border border-gold/30 bg-card p-8 shadow-lg">
+              <h3 className="font-display text-2xl text-primary">
+                {ur ? "ابھی رابطہ کریں" : "Contact us now"}
+              </h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {ur
+                  ? "واٹس ایپ پر پیغام بھیجیں اور اپنی مفت کلاس بک کروائیں۔ ہم 24 گھنٹوں میں جواب دیں گے۔"
+                  : "Send us a WhatsApp message to book your free trial class. We respond within 24 hours."}
+              </p>
+
+              <Button asChild variant="gold" size="lg" className="w-full">
+                <a href="https://wa.me/923298503412?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20book%20a%20free%20trial%20class." target="_blank" rel="noreferrer">
+                  <MessageCircle className="size-5" />
+                  {ur ? "واٹس ایپ پر بک کریں" : "Book via WhatsApp"}
+                </a>
+              </Button>
+
+              <div className="border-t border-border pt-4 space-y-2 text-sm text-muted-foreground">
+                <p className="flex items-center gap-2" dir="ltr">
+                  <Phone className="size-4 text-gold-dark" />
+                  0329 8503412
+                </p>
+                <p className="flex items-center gap-2" dir="ltr">
+                  <Phone className="size-4 text-gold-dark" />
+                  0335 0909536
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-gold/10 p-4 text-sm text-muted-foreground">
+                <p className="font-semibold text-primary mb-1">{ur ? "شامل ہے" : "What's included"}</p>
+                <ul className="space-y-1">
+                  <li>✓ {ur ? "تین مفت آزمائشی کلاسز" : "3 free trial classes"}</li>
+                  <li>✓ {ur ? "کوئی ادائیگی نہیں" : "No payment required"}</li>
+                  <li>✓ {ur ? "مرد یا خاتون استاد" : "Male or female teacher"}</li>
+                  <li>✓ {ur ? "لچکدار اوقات" : "Flexible timing"}</li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <Label htmlFor="message">Anything else we should know?</Label>
-              <Textarea id="message" name="message" rows={4} maxLength={1000} />
-            </div>
-            <Button type="submit" variant="gold" className="w-full" disabled={busy}>
-              {busy ? <Loader2 className="animate-spin" /> : null}
-              Request free trial
-            </Button>
-          </form>
+          </div>
         </div>
       </section>
     </>

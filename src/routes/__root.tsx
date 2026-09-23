@@ -78,8 +78,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "author", content: "Dar-ul-Uloom Online Quran Academy" },
-      { property: "og:site_name", content: "Dar-ul-Uloom Online Quran Academy" },
+      { name: "author", content: "Dar ul Uloom Online Quran Academy & Islamic Center" },
+      { property: "og:site_name", content: "Dar ul Uloom Online Quran Academy & Islamic Center" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
