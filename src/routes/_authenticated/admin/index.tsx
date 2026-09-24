@@ -25,7 +25,10 @@ function AdminAdmissionsPage() {
 
   const approveMutation = useMutation({
     mutationFn: async (userId: string) => {
-      const { data, error } = await supabase.rpc("approve_student", { p_user_id: userId, p_admin_notes: "Approved by Admin" });
+      const { data, error } = await supabase.rpc("approve_student", {
+        p_user_id: userId,
+        p_admin_notes: "Approved by Admin",
+      });
       if (error) throw error;
       return data;
     },
@@ -33,19 +36,22 @@ function AdminAdmissionsPage() {
       toast.success(`Student approved! ID: ${newStudentId}`);
       queryClient.invalidateQueries({ queryKey: ["admin-admissions"] });
     },
-    onError: (e: any) => toast.error(e.message || "Failed to approve"),
+    onError: (e: Error) => toast.error(e.message || "Failed to approve"),
   });
 
   const rejectMutation = useMutation({
     mutationFn: async (userId: string) => {
-      const { error } = await supabase.rpc("reject_student", { p_user_id: userId, p_reason: "Rejected by Admin" });
+      const { error } = await supabase.rpc("reject_student", {
+        p_user_id: userId,
+        p_reason: "Rejected by Admin",
+      });
       if (error) throw error;
     },
     onSuccess: () => {
       toast.success("Application rejected.");
       queryClient.invalidateQueries({ queryKey: ["admin-admissions"] });
     },
-    onError: (e: any) => toast.error(e.message || "Failed to reject"),
+    onError: (e: Error) => toast.error(e.message || "Failed to reject"),
   });
 
   return (
@@ -59,44 +65,82 @@ function AdminAdmissionsPage() {
         <table className="min-w-full divide-y divide-border">
           <thead className="bg-muted/50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase text-muted-foreground">Name</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase text-muted-foreground">Course</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase text-muted-foreground">Contact</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase text-muted-foreground">Date</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase text-muted-foreground">Status</th>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase text-muted-foreground">Actions</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase text-muted-foreground">
+                Name
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase text-muted-foreground">
+                Course
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase text-muted-foreground">
+                Contact
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase text-muted-foreground">
+                Date
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase text-muted-foreground">
+                Status
+              </th>
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase text-muted-foreground">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
             {isLoading ? (
-              <tr><td colSpan={6} className="px-6 py-4 text-center text-sm text-muted-foreground">Loading...</td></tr>
+              <tr>
+                <td colSpan={6} className="px-6 py-4 text-center text-sm text-muted-foreground">
+                  Loading...
+                </td>
+              </tr>
             ) : admissions?.length === 0 ? (
-              <tr><td colSpan={6} className="px-6 py-4 text-center text-sm text-muted-foreground">No applications found.</td></tr>
+              <tr>
+                <td colSpan={6} className="px-6 py-4 text-center text-sm text-muted-foreground">
+                  No applications found.
+                </td>
+              </tr>
             ) : (
               admissions?.map((app) => (
                 <tr key={app.id}>
                   <td className="px-6 py-4">
                     <div className="text-sm font-medium text-foreground">{app.full_name}</div>
-                    <div className="text-sm text-muted-foreground">{app.gender} • {app.country}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {app.gender} • {app.country}
+                    </div>
                   </td>
                   <td className="px-6 py-4 text-sm text-foreground">{app.course_interest}</td>
                   <td className="px-6 py-4">
                     <div className="text-sm text-foreground">{app.email}</div>
                     <div className="text-sm text-muted-foreground">{app.phone}</div>
                   </td>
-                  <td className="px-6 py-4 text-sm text-foreground">{new Date(app.submitted_at).toLocaleDateString()}</td>
+                  <td className="px-6 py-4 text-sm text-foreground">
+                    {new Date(app.submitted_at).toLocaleDateString()}
+                  </td>
                   <td className="px-6 py-4">
-                    <span className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${app.status === 'approved' ? 'bg-green-100 text-green-800' : app.status === 'rejected' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                    <span
+                      className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${app.status === "approved" ? "bg-green-100 text-green-800" : app.status === "rejected" ? "bg-red-100 text-red-800" : "bg-yellow-100 text-yellow-800"}`}
+                    >
                       {app.status.toUpperCase()}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-right text-sm font-medium">
-                    {app.status === 'pending' && (
+                    {app.status === "pending" && (
                       <div className="flex justify-end gap-2">
-                        <Button size="sm" variant="outline" className="text-green-600 hover:text-green-700 hover:bg-green-50" onClick={() => approveMutation.mutate(app.user_id)} disabled={approveMutation.isPending}>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="text-green-600 hover:text-green-700 hover:bg-green-50"
+                          onClick={() => approveMutation.mutate(app.user_id)}
+                          disabled={approveMutation.isPending}
+                        >
                           <CheckCircle className="mr-1 size-4" /> Approve
                         </Button>
-                        <Button size="sm" variant="outline" className="text-red-600 hover:text-red-700 hover:bg-red-50" onClick={() => rejectMutation.mutate(app.user_id)} disabled={rejectMutation.isPending}>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                          onClick={() => rejectMutation.mutate(app.user_id)}
+                          disabled={rejectMutation.isPending}
+                        >
                           <XCircle className="mr-1 size-4" /> Reject
                         </Button>
                       </div>

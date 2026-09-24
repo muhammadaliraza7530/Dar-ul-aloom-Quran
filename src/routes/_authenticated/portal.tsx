@@ -1,5 +1,16 @@
 import { createFileRoute, Outlet, Link, useNavigate } from "@tanstack/react-router";
-import { LayoutDashboard, User, BookOpen, CalendarCheck, BookMarked, TrendingUp, CreditCard, Bell, Files, LogOut } from "lucide-react";
+import {
+  LayoutDashboard,
+  User,
+  BookOpen,
+  CalendarCheck,
+  BookMarked,
+  TrendingUp,
+  CreditCard,
+  Bell,
+  Files,
+  LogOut,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/components/academy-layout";
 import { Button } from "@/components/ui/button";
@@ -38,7 +49,9 @@ function PortalLayout() {
       <aside className="w-64 flex-shrink-0 border-r border-border bg-card">
         <div className="flex h-full flex-col">
           <div className="p-6 border-b border-border">
-            <h2 className="font-display text-xl text-primary">{ur ? "طالب علم پورٹل" : "Student Portal"}</h2>
+            <h2 className="font-display text-xl text-primary">
+              {ur ? "طالب علم پورٹل" : "Student Portal"}
+            </h2>
           </div>
           <nav className="flex-1 space-y-1 p-4">
             {navItems.map((item) => (
@@ -54,7 +67,11 @@ function PortalLayout() {
             ))}
           </nav>
           <div className="p-4 border-t border-border">
-            <Button variant="ghost" className="w-full justify-start text-muted-foreground hover:text-destructive" onClick={handleSignOut}>
+            <Button
+              variant="ghost"
+              className="w-full justify-start text-muted-foreground hover:text-destructive"
+              onClick={handleSignOut}
+            >
               <LogOut className="mr-2 size-4" />
               {ur ? "لاگ آؤٹ" : "Sign Out"}
             </Button>

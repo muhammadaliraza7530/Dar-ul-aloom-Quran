@@ -8,9 +8,20 @@ import { galleryPhotos, galleryVideos } from "@/lib/gallery";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Classes, Students & Teachers | Dar ul Uloom Online Quran Academy & Islamic Center" },
-      { name: "description", content: "Photos and videos from our online Quran classes: students, teachers, Tajweed practice and memorization sessions at Dar ul Uloom Online Quran Academy & Islamic Center." },
-      { property: "og:title", content: "Gallery — Classes, Students & Teachers | Dar ul Uloom Online Quran Academy & Islamic Center" },
+      {
+        title:
+          "Gallery — Classes, Students & Teachers | Dar ul Uloom Online Quran Academy & Islamic Center",
+      },
+      {
+        name: "description",
+        content:
+          "Photos and videos from our online Quran classes: students, teachers, Tajweed practice and memorization sessions at Dar ul Uloom Online Quran Academy & Islamic Center.",
+      },
+      {
+        property: "og:title",
+        content:
+          "Gallery — Classes, Students & Teachers | Dar ul Uloom Online Quran Academy & Islamic Center",
+      },
       { property: "og:description", content: "See our online Quran classes in photos and videos." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,10 +46,17 @@ function GalleryPage() {
 
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeading eyebrow={ur ? "ویڈیوز" : "Videos"} title="Watch a class" urdu="کلاس دیکھیں" />
+          <SectionHeading
+            eyebrow={ur ? "ویڈیوز" : "Videos"}
+            title="Watch a class"
+            urdu="کلاس دیکھیں"
+          />
           <div className="grid gap-6 md:grid-cols-2">
             {galleryVideos.map((video) => (
-              <figure key={video.url} className="group overflow-hidden border border-border bg-card shadow-sm transition-shadow hover:shadow-lg">
+              <figure
+                key={video.url}
+                className="group overflow-hidden border border-border bg-card shadow-sm transition-shadow hover:shadow-lg"
+              >
                 <video
                   className="aspect-video w-full bg-noir object-cover"
                   poster={video.poster}
@@ -61,7 +79,11 @@ function GalleryPage() {
 
       <section className="bg-secondary py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeading eyebrow={ur ? "تصاویر" : "Photos"} title="Students and teachers" urdu="طلبہ اور اساتذہ" />
+          <SectionHeading
+            eyebrow={ur ? "تصاویر" : "Photos"}
+            title="Students and teachers"
+            urdu="طلبہ اور اساتذہ"
+          />
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {galleryPhotos.map((photo, index) => (
               <button

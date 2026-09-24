@@ -13,7 +13,10 @@ function AdminRemarksPage() {
       </div>
       <div className="rounded-lg border border-border bg-card p-12 text-center">
         <p className="text-muted-foreground">Remarks entry interface goes here.</p>
-        <p className="text-sm mt-2">For now, records can be directly added via the Supabase dashboard in the `teacher_remarks` table.</p>
+        <p className="text-sm mt-2">
+          For now, records can be directly added via the Supabase dashboard in the `teacher_remarks`
+          table.
+        </p>
       </div>
     </div>
   );

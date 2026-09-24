@@ -1,5 +1,14 @@
 import { createFileRoute, Outlet, Link, redirect, useNavigate } from "@tanstack/react-router";
-import { Users, FileCheck2, CalendarCheck, BookMarked, TrendingUp, CreditCard, LogOut, ShieldAlert } from "lucide-react";
+import {
+  Users,
+  FileCheck2,
+  CalendarCheck,
+  BookMarked,
+  TrendingUp,
+  CreditCard,
+  LogOut,
+  ShieldAlert,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -56,7 +65,11 @@ function AdminLayout() {
             ))}
           </nav>
           <div className="p-4 border-t border-border">
-            <Button variant="ghost" className="w-full justify-start text-muted-foreground hover:text-destructive" onClick={handleSignOut}>
+            <Button
+              variant="ghost"
+              className="w-full justify-start text-muted-foreground hover:text-destructive"
+              onClick={handleSignOut}
+            >
               <LogOut className="mr-2 size-4" />
               Sign Out
             </Button>

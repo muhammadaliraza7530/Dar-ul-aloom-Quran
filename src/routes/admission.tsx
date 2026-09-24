@@ -14,8 +14,15 @@ export const Route = createFileRoute("/admission")({
   head: () => ({
     meta: [
       { title: "Admission Form | Dar ul Uloom Online Quran Academy & Islamic Center" },
-      { name: "description", content: "Enroll in Dar ul Uloom Online Quran Academy & Islamic Center. Submit your admission details." },
-      { property: "og:title", content: "Admission Form | Dar ul Uloom Online Quran Academy & Islamic Center" },
+      {
+        name: "description",
+        content:
+          "Enroll in Dar ul Uloom Online Quran Academy & Islamic Center. Submit your admission details.",
+      },
+      {
+        property: "og:title",
+        content: "Admission Form | Dar ul Uloom Online Quran Academy & Islamic Center",
+      },
     ],
   }),
   component: AdmissionPage,
@@ -30,7 +37,7 @@ function AdmissionPage() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    
+
     const data = {
       studentName: String(formData.get("studentName") || ""),
       parentName: String(formData.get("parentName") || ""),
@@ -46,7 +53,8 @@ function AdmissionPage() {
     };
 
     // 1. WhatsApp Delivery
-    const waText = `*New Admission Application* 🎓\n\n` +
+    const waText =
+      `*New Admission Application* 🎓\n\n` +
       `*Student Name:* ${data.studentName}\n` +
       `*Parent/Guardian:* ${data.parentName}\n` +
       `*Age:* ${data.age}\n` +
@@ -63,14 +71,14 @@ function AdmissionPage() {
     try {
       await sendEmailNotification({
         type: "Admission",
-        details: data
+        details: data,
       });
     } catch (e) {
       console.error("Email notification failed:", e);
     }
 
     // 3. WhatsApp Delivery (Frontend redirect)
-    window.open(waUrl, '_blank');
+    window.open(waUrl, "_blank");
 
     toast.success("Application details generated! Opening WhatsApp...");
     setBusy(false);
@@ -93,7 +101,9 @@ function AdmissionPage() {
               </div>
               <div>
                 <h2 className="font-display text-2xl text-primary">Application Form</h2>
-                <p className="text-sm text-muted-foreground">Submit your details to our administration securely.</p>
+                <p className="text-sm text-muted-foreground">
+                  Submit your details to our administration securely.
+                </p>
               </div>
             </div>
 
@@ -101,7 +111,12 @@ function AdmissionPage() {
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="studentName">Student Name *</Label>
-                  <Input id="studentName" name="studentName" required placeholder="Full name of student" />
+                  <Input
+                    id="studentName"
+                    name="studentName"
+                    required
+                    placeholder="Full name of student"
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="parentName">Parent / Guardian Name *</Label>
@@ -109,7 +124,14 @@ function AdmissionPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="age">Age *</Label>
-                  <Input id="age" name="age" required placeholder="e.g., 10" type="number" min="4" />
+                  <Input
+                    id="age"
+                    name="age"
+                    required
+                    placeholder="e.g., 10"
+                    type="number"
+                    min="4"
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="gender">Gender *</Label>
@@ -130,13 +152,25 @@ function AdmissionPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="whatsapp">WhatsApp Number *</Label>
-                  <Input id="whatsapp" name="whatsapp" required placeholder="With country code (+44...)" type="tel" />
+                  <Input
+                    id="whatsapp"
+                    name="whatsapp"
+                    required
+                    placeholder="With country code (+44...)"
+                    type="tel"
+                  />
                 </div>
                 <div className="space-y-2 sm:col-span-2">
                   <Label htmlFor="email">Email Address *</Label>
-                  <Input id="email" name="email" required placeholder="your.email@example.com" type="email" />
+                  <Input
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="your.email@example.com"
+                    type="email"
+                  />
                 </div>
-                
+
                 <div className="space-y-2 sm:col-span-2">
                   <Label htmlFor="course">Selected Course *</Label>
                   <select
@@ -146,35 +180,57 @@ function AdmissionPage() {
                     className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                   >
                     <option value="">Select a course...</option>
-                    {courses.map(c => (
-                      <option key={c.slug} value={c.name}>{c.name}</option>
+                    {courses.map((c) => (
+                      <option key={c.slug} value={c.name}>
+                        {c.name}
+                      </option>
                     ))}
                   </select>
                 </div>
 
                 <div className="space-y-2 sm:col-span-2">
                   <Label htmlFor="timing">Preferred Class Timing</Label>
-                  <Input id="timing" name="timing" placeholder="e.g., Weekends morning, Weekdays 5 PM" />
+                  <Input
+                    id="timing"
+                    name="timing"
+                    placeholder="e.g., Weekends morning, Weekdays 5 PM"
+                  />
                 </div>
-                
+
                 <div className="space-y-2 sm:col-span-2">
                   <Label htmlFor="previousEducation">Previous Quran / Islamic Education</Label>
-                  <Textarea id="previousEducation" name="previousEducation" placeholder="Briefly describe if the student has learned Qaida or Quran before..." />
+                  <Textarea
+                    id="previousEducation"
+                    name="previousEducation"
+                    placeholder="Briefly describe if the student has learned Qaida or Quran before..."
+                  />
                 </div>
 
                 <div className="space-y-2 sm:col-span-2">
                   <Label htmlFor="message">Additional Message / Requirements</Label>
-                  <Textarea id="message" name="message" placeholder="Any special requests or details we should know?" className="min-h-[100px]" />
+                  <Textarea
+                    id="message"
+                    name="message"
+                    placeholder="Any special requests or details we should know?"
+                    className="min-h-[100px]"
+                  />
                 </div>
               </div>
 
               <div className="pt-4 border-t border-border">
-                <Button type="submit" variant="gold" size="lg" className="w-full sm:w-auto" disabled={busy}>
+                <Button
+                  type="submit"
+                  variant="gold"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                  disabled={busy}
+                >
                   <Send className="mr-2 size-4" />
                   Submit Application
                 </Button>
                 <p className="mt-4 text-xs text-muted-foreground text-center sm:text-left">
-                  By submitting, your details will be sent directly to our administration via WhatsApp and Email for immediate processing.
+                  By submitting, your details will be sent directly to our administration via
+                  WhatsApp and Email for immediate processing.
                 </p>
               </div>
             </form>

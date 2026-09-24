@@ -9,7 +9,10 @@ export const Route = createFileRoute("/_authenticated/pending")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Application Pending | Dar ul Uloom Online Quran Academy & Islamic Center Quran Academy & Islamic Center" },
+      {
+        title:
+          "Application Pending | Dar ul Uloom Online Quran Academy & Islamic Center Quran Academy & Islamic Center",
+      },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -23,10 +26,7 @@ function PendingPage() {
   const { data: admission } = useQuery({
     queryKey: ["my-admission"],
     queryFn: async () => {
-      const { data } = await supabase
-        .from("student_admissions")
-        .select("*")
-        .maybeSingle();
+      const { data } = await supabase.from("student_admissions").select("*").maybeSingle();
       return data;
     },
   });
@@ -43,9 +43,13 @@ function PendingPage() {
               {ur ? "درخواست مسترد" : "Application Not Approved"}
             </h1>
             <div className="mt-4 border border-destructive/30 bg-destructive/5 p-4 text-sm text-muted-foreground">
-              {admission?.rejection_reason
-                ? <p><strong>Reason:</strong> {admission.rejection_reason}</p>
-                : <p>Your application was not approved at this time.</p>}
+              {admission?.rejection_reason ? (
+                <p>
+                  <strong>Reason:</strong> {admission.rejection_reason}
+                </p>
+              ) : (
+                <p>Your application was not approved at this time.</p>
+              )}
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
               Please contact us on WhatsApp for more information.
@@ -106,7 +110,8 @@ function PendingPage() {
                   <strong className="text-primary">Course:</strong> {admission.course_interest}
                 </p>
                 <p className="text-muted-foreground">
-                  <strong className="text-primary">Submitted:</strong> {new Date(admission.submitted_at).toLocaleDateString()}
+                  <strong className="text-primary">Submitted:</strong>{" "}
+                  {new Date(admission.submitted_at).toLocaleDateString()}
                 </p>
               </div>
             )}

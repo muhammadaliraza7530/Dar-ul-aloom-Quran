@@ -26,8 +26,12 @@ function MaterialsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-3xl text-primary">{ur ? "مطالعاتی مواد" : "Learning Materials"}</h1>
-        <p className="mt-1 text-muted-foreground">{ur ? "کتب، قاعدہ اور دیگر مفید مواد" : "Books, Qaida, and other useful resources"}</p>
+        <h1 className="font-display text-3xl text-primary">
+          {ur ? "مطالعاتی مواد" : "Learning Materials"}
+        </h1>
+        <p className="mt-1 text-muted-foreground">
+          {ur ? "کتب، قاعدہ اور دیگر مفید مواد" : "Books, Qaida, and other useful resources"}
+        </p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -39,16 +43,21 @@ function MaterialsPage() {
           </div>
         ) : (
           materials?.map((item) => (
-            <div key={item.id} className="rounded-lg border border-border bg-card p-6 shadow-sm flex flex-col">
+            <div
+              key={item.id}
+              className="rounded-lg border border-border bg-card p-6 shadow-sm flex flex-col"
+            >
               <div className="flex items-center gap-3">
                 <FileText className="size-8 text-gold-dark" />
                 <h3 className="font-display text-lg text-primary line-clamp-2">{item.title}</h3>
               </div>
-              <p className="mt-4 text-sm text-muted-foreground flex-1 line-clamp-3">{item.description}</p>
-              <a 
-                href={item.url} 
-                target="_blank" 
-                rel="noreferrer" 
+              <p className="mt-4 text-sm text-muted-foreground flex-1 line-clamp-3">
+                {item.description}
+              </p>
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
                 className="mt-6 inline-flex items-center justify-center gap-2 rounded-md bg-secondary px-4 py-2 text-sm font-medium text-foreground hover:bg-gold/20 hover:text-gold-dark transition-colors"
               >
                 <Download className="size-4" />

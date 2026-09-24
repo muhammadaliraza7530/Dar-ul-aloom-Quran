@@ -12,9 +12,19 @@ export const Route = createFileRoute("/reset-password")({
   head: () => ({
     meta: [
       { title: "Set a new password | Dar ul Uloom Online Quran Academy & Islamic Center" },
-      { name: "description", content: "Choose a new password for your Dar ul Uloom Online Quran Academy & Islamic Center student portal account." },
-      { property: "og:title", content: "Set a new password | Dar ul Uloom Online Quran Academy & Islamic Center" },
-      { property: "og:description", content: "Choose a new password for your student portal account." },
+      {
+        name: "description",
+        content:
+          "Choose a new password for your Dar ul Uloom Online Quran Academy & Islamic Center student portal account.",
+      },
+      {
+        property: "og:title",
+        content: "Set a new password | Dar ul Uloom Online Quran Academy & Islamic Center",
+      },
+      {
+        property: "og:description",
+        content: "Choose a new password for your student portal account.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -61,11 +71,27 @@ function ResetPasswordPage() {
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
             <div>
               <Label htmlFor="password">New password</Label>
-              <Input id="password" name="password" type="password" autoComplete="new-password" required minLength={8} maxLength={72} />
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="new-password"
+                required
+                minLength={8}
+                maxLength={72}
+              />
             </div>
             <div>
               <Label htmlFor="confirm">Confirm password</Label>
-              <Input id="confirm" name="confirm" type="password" autoComplete="new-password" required minLength={8} maxLength={72} />
+              <Input
+                id="confirm"
+                name="confirm"
+                type="password"
+                autoComplete="new-password"
+                required
+                minLength={8}
+                maxLength={72}
+              />
             </div>
             <Button type="submit" variant="gold" className="w-full" disabled={busy}>
               {busy ? <Loader2 className="animate-spin" /> : null}

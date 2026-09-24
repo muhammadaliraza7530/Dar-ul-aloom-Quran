@@ -13,15 +13,25 @@ export const Route = createFileRoute("/course/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Course not found | Dar ul Uloom Online Quran Academy & Islamic Center" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [
+          { title: "Course not found | Dar ul Uloom Online Quran Academy & Islamic Center" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
     }
     const { course } = loaderData;
     const description = `${course.summary} Level: ${course.level}. Duration: ${course.duration}.`;
     return {
       meta: [
-        { title: `${course.name} Course Online | Dar ul Uloom Online Quran Academy & Islamic Center` },
+        {
+          title: `${course.name} Course Online | Dar ul Uloom Online Quran Academy & Islamic Center`,
+        },
         { name: "description", content: description.slice(0, 155) },
-        { property: "og:title", content: `${course.name} Course Online | Dar ul Uloom Online Quran Academy & Islamic Center Quran Academy & Islamic Center` },
+        {
+          property: "og:title",
+          content: `${course.name} Course Online | Dar ul Uloom Online Quran Academy & Islamic Center Quran Academy & Islamic Center`,
+        },
         { property: "og:description", content: description.slice(0, 155) },
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -38,11 +48,24 @@ function CourseDetailPage() {
   return (
     <>
       {/* Premium hero header for this course */}
-      <section className={`relative overflow-hidden bg-gradient-to-br ${visual.gradient} py-20 text-white`}>
+      <section
+        className={`relative overflow-hidden bg-gradient-to-br ${visual.gradient} py-20 text-white`}
+      >
         {/* Background pattern */}
-        <svg className="absolute inset-0 h-full w-full opacity-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="absolute inset-0 h-full w-full opacity-10"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <defs>
-            <pattern id="course-hero-pat" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+            <pattern
+              id="course-hero-pat"
+              x="0"
+              y="0"
+              width="48"
+              height="48"
+              patternUnits="userSpaceOnUse"
+            >
               <circle cx="24" cy="24" r="10" stroke="white" strokeWidth="0.5" fill="none" />
               <circle cx="24" cy="24" r="18" stroke="white" strokeWidth="0.3" fill="none" />
               <line x1="6" y1="24" x2="42" y2="24" stroke="white" strokeWidth="0.3" />
@@ -55,9 +78,14 @@ function CourseDetailPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
           {/* Breadcrumb */}
           <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/60">
-            <Link to="/" className="hover:text-white">Home</Link>
-            {" "}/  <Link to="/courses" className="hover:text-white">Courses</Link>
-            {" "}/ {course.name}
+            <Link to="/" className="hover:text-white">
+              Home
+            </Link>{" "}
+            /{" "}
+            <Link to="/courses" className="hover:text-white">
+              Courses
+            </Link>{" "}
+            / {course.name}
           </p>
 
           <div className="flex items-start gap-6">
@@ -71,7 +99,8 @@ function CourseDetailPage() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <span className="rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium backdrop-blur-sm ring-1 ring-white/20">
-                  <Clock3 className="inline size-4 mr-1 -mt-0.5" />{course.level}
+                  <Clock3 className="inline size-4 mr-1 -mt-0.5" />
+                  {course.level}
                 </span>
                 <span className="rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium backdrop-blur-sm ring-1 ring-white/20">
                   ⏱ {course.duration}
@@ -93,7 +122,10 @@ function CourseDetailPage() {
               <h2 className="font-display text-2xl text-primary">What you will achieve</h2>
               <ul className="mt-5 space-y-4">
                 {course.outcomes.map((item) => (
-                  <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                  <li
+                    key={item}
+                    className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
+                  >
                     <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-gold-dark" />
                     {item}
                   </li>

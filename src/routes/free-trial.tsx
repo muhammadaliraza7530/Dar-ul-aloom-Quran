@@ -8,9 +8,19 @@ export const Route = createFileRoute("/free-trial")({
   head: () => ({
     meta: [
       { title: "Book a Free Trial Class | Dar ul Uloom Online Quran Academy & Islamic Center" },
-      { name: "description", content: "Book your free online Quran trial class. Contact us on WhatsApp to get started with a qualified male or female teacher." },
-      { property: "og:title", content: "Book a Free Trial Class | Dar ul Uloom Online Quran Academy & Islamic Center" },
-      { property: "og:description", content: "Contact us on WhatsApp to book your free one-to-one online Quran trial class." },
+      {
+        name: "description",
+        content:
+          "Book your free online Quran trial class. Contact us on WhatsApp to get started with a qualified male or female teacher.",
+      },
+      {
+        property: "og:title",
+        content: "Book a Free Trial Class | Dar ul Uloom Online Quran Academy & Islamic Center",
+      },
+      {
+        property: "og:description",
+        content: "Contact us on WhatsApp to book your free one-to-one online Quran trial class.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -43,7 +53,8 @@ function FreeTrialPage() {
                     icon: MessageCircle,
                     en: "Send us a WhatsApp message",
                     ur: "واٹس ایپ پر میسج بھیجیں",
-                    desc_en: "Tell us your name, the course you are interested in, and your preferred timing.",
+                    desc_en:
+                      "Tell us your name, the course you are interested in, and your preferred timing.",
                     desc_ur: "اپنا نام، کورس اور پسندیدہ وقت بتائیں۔",
                   },
                   {
@@ -61,13 +72,18 @@ function FreeTrialPage() {
                     desc_ur: "کوئی فیس نہیں۔ باقاعدہ داخلے سے پہلے تعلیم کا تجربہ لیں۔",
                   },
                 ].map((step, i) => (
-                  <div key={i} className="flex gap-4 rounded-xl border border-border bg-card p-5 shadow-sm">
+                  <div
+                    key={i}
+                    className="flex gap-4 rounded-xl border border-border bg-card p-5 shadow-sm"
+                  >
                     <div className="rounded-2xl bg-gold/10 p-3 text-gold-dark ring-1 ring-gold/20 shrink-0">
                       <step.icon className="size-6" />
                     </div>
                     <div>
                       <p className="font-semibold text-primary">{ur ? step.ur : step.en}</p>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{ur ? step.desc_ur : step.desc_en}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                        {ur ? step.desc_ur : step.desc_en}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -86,7 +102,11 @@ function FreeTrialPage() {
               </p>
 
               <Button asChild variant="gold" size="lg" className="w-full">
-                <a href="https://wa.me/923298503412?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20book%20a%20free%20trial%20class." target="_blank" rel="noreferrer">
+                <a
+                  href="https://wa.me/923298503412?text=Assalamu%20Alaikum%2C%20I%20would%20like%20to%20book%20a%20free%20trial%20class."
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <MessageCircle className="size-5" />
                   {ur ? "واٹس ایپ پر بک کریں" : "Book via WhatsApp"}
                 </a>
@@ -104,7 +124,9 @@ function FreeTrialPage() {
               </div>
 
               <div className="rounded-lg bg-gold/10 p-4 text-sm text-muted-foreground">
-                <p className="font-semibold text-primary mb-1">{ur ? "شامل ہے" : "What's included"}</p>
+                <p className="font-semibold text-primary mb-1">
+                  {ur ? "شامل ہے" : "What's included"}
+                </p>
                 <ul className="space-y-1">
                   <li>✓ {ur ? "تین مفت آزمائشی کلاسز" : "3 free trial classes"}</li>
                   <li>✓ {ur ? "کوئی ادائیگی نہیں" : "No payment required"}</li>

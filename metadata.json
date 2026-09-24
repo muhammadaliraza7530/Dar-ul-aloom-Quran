@@ -1,0 +1,6 @@
+{
+  "name": "Dar ul Uloom Online Quran Academy",
+  "description": "Dar ul Uloom Online Quran Academy & Islamic Center - Online Quran, Tajweed, Arabic and Islamic studies worldwide.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -10,9 +10,19 @@ export const Route = createFileRoute("/courses")({
   head: () => ({
     meta: [
       { title: "Online Quran Courses | Dar ul Uloom Online Quran Academy & Islamic Center" },
-      { name: "description", content: "Explore 14 online Quran, Tajweed, Hifz, Arabic and Islamic studies courses for kids and adults." },
-      { property: "og:title", content: "Online Quran Courses | Dar ul Uloom Online Quran Academy & Islamic Center" },
-      { property: "og:description", content: "Quran and Islamic education courses for all ages and levels." },
+      {
+        name: "description",
+        content:
+          "Explore 14 online Quran, Tajweed, Hifz, Arabic and Islamic studies courses for kids and adults.",
+      },
+      {
+        property: "og:title",
+        content: "Online Quran Courses | Dar ul Uloom Online Quran Academy & Islamic Center",
+      },
+      {
+        property: "og:description",
+        content: "Quran and Islamic education courses for all ages and levels.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -70,7 +80,9 @@ function CoursesPage() {
           </div>
 
           {filtered.length === 0 ? (
-            <p className="mt-10 text-center text-sm text-muted-foreground">No courses match this filter.</p>
+            <p className="mt-10 text-center text-sm text-muted-foreground">
+              No courses match this filter.
+            </p>
           ) : null}
         </div>
       </section>

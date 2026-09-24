@@ -5,16 +5,18 @@
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
-  font-family: 'Jameel Noori Nastaleeq Kasheeda';
-  src: url('https://cdn.jsdelivr.net/gh/haideralishah/urdu-webfonts@master/fonts/JameelNooriNastaleeqKasheeda/JameelNooriNastaleeqKasheeda.woff2') format('woff2');
+  font-family: "Jameel Noori Nastaleeq Kasheeda";
+  src: url("https://cdn.jsdelivr.net/gh/haideralishah/urdu-webfonts@master/fonts/JameelNooriNastaleeqKasheeda/JameelNooriNastaleeqKasheeda.woff2")
+    format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/haideralishah/urdu-webfonts@master/fonts/JameelNooriNastaleeq/JameelNooriNastaleeq.woff2') format('woff2');
+  font-family: "Jameel Noori Nastaleeq";
+  src: url("https://cdn.jsdelivr.net/gh/haideralishah/urdu-webfonts@master/fonts/JameelNooriNastaleeq/JameelNooriNastaleeq.woff2")
+    format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -37,7 +39,8 @@
 @theme inline {
   --font-sans: "Fira Sans", sans-serif;
   --font-display: "DM Serif Display", serif;
-  --font-urdu: "Jameel Noori Nastaleeq Kasheeda", "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", serif;
+  --font-urdu:
+    "Jameel Noori Nastaleeq Kasheeda", "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -175,9 +178,16 @@
     min-width: 320px;
   }
 
-  h1, h2, h3 { letter-spacing: 0; }
+  h1,
+  h2,
+  h3 {
+    letter-spacing: 0;
+  }
 
-  button, a { cursor: pointer; }
+  button,
+  a {
+    cursor: pointer;
+  }
 }
 
 @utility font-urdu {
@@ -186,6 +196,10 @@
 }
 
 @utility pattern-band {
-  background-image: radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--gold) 18%, transparent) 1px, transparent 0);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in oklab, var(--gold) 18%, transparent) 1px,
+    transparent 0
+  );
   background-size: 22px 22px;
 }

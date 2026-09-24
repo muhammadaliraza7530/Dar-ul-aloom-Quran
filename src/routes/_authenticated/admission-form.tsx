@@ -15,7 +15,10 @@ export const Route = createFileRoute("/_authenticated/admission-form")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Student Admission Form | Dar ul Uloom Online Quran Academy & Islamic Center Quran Academy & Islamic Center" },
+      {
+        title:
+          "Student Admission Form | Dar ul Uloom Online Quran Academy & Islamic Center Quran Academy & Islamic Center",
+      },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -61,7 +64,11 @@ function AdmissionFormPage() {
 
     setBusy(true);
     const { data: userData } = await supabase.auth.getUser();
-    if (!userData.user) { toast.error("Please log in first"); setBusy(false); return; }
+    if (!userData.user) {
+      toast.error("Please log in first");
+      setBusy(false);
+      return;
+    }
 
     const { error } = await supabase.from("student_admissions").upsert({
       user_id: userData.user.id,
@@ -76,18 +83,21 @@ function AdmissionFormPage() {
     }
 
     // Update profile admission_status to pending
-    await supabase.from("profiles").update({
-      admission_status: "pending",
-      full_name: parsed.data.full_name,
-      email: parsed.data.email,
-      phone: parsed.data.phone,
-      country: parsed.data.country ?? "",
-      city: parsed.data.city ?? "",
-      father_name: parsed.data.father_name,
-      gender: parsed.data.gender,
-      date_of_birth: parsed.data.date_of_birth ?? null,
-      address: parsed.data.address ?? "",
-    }).eq("id", userData.user.id);
+    await supabase
+      .from("profiles")
+      .update({
+        admission_status: "pending",
+        full_name: parsed.data.full_name,
+        email: parsed.data.email,
+        phone: parsed.data.phone,
+        country: parsed.data.country ?? "",
+        city: parsed.data.city ?? "",
+        father_name: parsed.data.father_name,
+        gender: parsed.data.gender,
+        date_of_birth: parsed.data.date_of_birth ?? null,
+        address: parsed.data.address ?? "",
+      })
+      .eq("id", userData.user.id);
 
     setBusy(false);
     setDone(true);
@@ -126,7 +136,10 @@ function AdmissionFormPage() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8 border border-border bg-card p-8 shadow-sm">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-8 border border-border bg-card p-8 shadow-sm"
+        >
           {/* Personal Information */}
           <fieldset>
             <legend className="mb-4 border-b border-gold/30 pb-2 font-display text-xl text-gold-dark">
@@ -134,11 +147,21 @@ function AdmissionFormPage() {
             </legend>
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <Label htmlFor="full_name">{ur ? "طالب علم کا پورا نام *" : "Student Full Name *"}</Label>
-                <Input id="full_name" name="full_name" required maxLength={120} placeholder="Muhammad Ahmad" />
+                <Label htmlFor="full_name">
+                  {ur ? "طالب علم کا پورا نام *" : "Student Full Name *"}
+                </Label>
+                <Input
+                  id="full_name"
+                  name="full_name"
+                  required
+                  maxLength={120}
+                  placeholder="Muhammad Ahmad"
+                />
               </div>
               <div>
-                <Label htmlFor="father_name">{ur ? "والد / سرپرست کا نام *" : "Father / Guardian Name *"}</Label>
+                <Label htmlFor="father_name">
+                  {ur ? "والد / سرپرست کا نام *" : "Father / Guardian Name *"}
+                </Label>
                 <Input id="father_name" name="father_name" required maxLength={120} />
               </div>
               <div>
@@ -151,7 +174,12 @@ function AdmissionFormPage() {
               </div>
               <div>
                 <Label htmlFor="gender">{ur ? "جنس *" : "Gender *"}</Label>
-                <select id="gender" name="gender" required className="mt-1 h-10 w-full border border-input bg-background px-3 text-sm">
+                <select
+                  id="gender"
+                  name="gender"
+                  required
+                  className="mt-1 h-10 w-full border border-input bg-background px-3 text-sm"
+                >
                   <option value="">-- Select --</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -172,7 +200,13 @@ function AdmissionFormPage() {
               </div>
               <div>
                 <Label htmlFor="phone">{ur ? "فون نمبر *" : "Phone Number *"}</Label>
-                <Input id="phone" name="phone" required maxLength={40} placeholder="+92 300 0000000" />
+                <Input
+                  id="phone"
+                  name="phone"
+                  required
+                  maxLength={40}
+                  placeholder="+92 300 0000000"
+                />
               </div>
               <div>
                 <Label htmlFor="whatsapp">{ur ? "واٹس ایپ نمبر" : "WhatsApp Number"}</Label>
@@ -200,21 +234,45 @@ function AdmissionFormPage() {
             </legend>
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <Label htmlFor="course_interest">{ur ? "مطلوبہ کورس *" : "Course of Interest *"}</Label>
-                <select id="course_interest" name="course_interest" required className="mt-1 h-10 w-full border border-input bg-background px-3 text-sm">
+                <Label htmlFor="course_interest">
+                  {ur ? "مطلوبہ کورس *" : "Course of Interest *"}
+                </Label>
+                <select
+                  id="course_interest"
+                  name="course_interest"
+                  required
+                  className="mt-1 h-10 w-full border border-input bg-background px-3 text-sm"
+                >
                   <option value="">-- Select Course --</option>
                   {courses.map((c) => (
-                    <option key={c.slug} value={c.name}>{c.name}</option>
+                    <option key={c.slug} value={c.name}>
+                      {c.name}
+                    </option>
                   ))}
                 </select>
               </div>
               <div>
-                <Label htmlFor="preferred_time">{ur ? "پسندیدہ کلاس وقت" : "Preferred Class Time"}</Label>
-                <Input id="preferred_time" name="preferred_time" maxLength={120} placeholder="e.g. 7pm UK time / After Asr" />
+                <Label htmlFor="preferred_time">
+                  {ur ? "پسندیدہ کلاس وقت" : "Preferred Class Time"}
+                </Label>
+                <Input
+                  id="preferred_time"
+                  name="preferred_time"
+                  maxLength={120}
+                  placeholder="e.g. 7pm UK time / After Asr"
+                />
               </div>
               <div className="sm:col-span-2">
-                <Label htmlFor="previous_education">{ur ? "پچھلی قرآنی تعلیم" : "Previous Quran Education"}</Label>
-                <Textarea id="previous_education" name="previous_education" rows={2} maxLength={300} placeholder="e.g. Noorani Qaida completed, Surah Baqarah memorized..." />
+                <Label htmlFor="previous_education">
+                  {ur ? "پچھلی قرآنی تعلیم" : "Previous Quran Education"}
+                </Label>
+                <Textarea
+                  id="previous_education"
+                  name="previous_education"
+                  rows={2}
+                  maxLength={300}
+                  placeholder="e.g. Noorani Qaida completed, Surah Baqarah memorized..."
+                />
               </div>
             </div>
           </fieldset>
@@ -231,7 +289,11 @@ function AdmissionFormPage() {
               </div>
               <div>
                 <Label htmlFor="guardian_relation">{ur ? "رشتہ" : "Relation to Student"}</Label>
-                <select id="guardian_relation" name="guardian_relation" className="mt-1 h-10 w-full border border-input bg-background px-3 text-sm">
+                <select
+                  id="guardian_relation"
+                  name="guardian_relation"
+                  className="mt-1 h-10 w-full border border-input bg-background px-3 text-sm"
+                >
                   <option value="">-- Select --</option>
                   <option value="Father">Father</option>
                   <option value="Mother">Mother</option>
@@ -240,7 +302,9 @@ function AdmissionFormPage() {
                 </select>
               </div>
               <div>
-                <Label htmlFor="guardian_phone">{ur ? "سرپرست فون / واٹس ایپ" : "Guardian Phone / WhatsApp"}</Label>
+                <Label htmlFor="guardian_phone">
+                  {ur ? "سرپرست فون / واٹس ایپ" : "Guardian Phone / WhatsApp"}
+                </Label>
                 <Input id="guardian_phone" name="guardian_phone" maxLength={40} />
               </div>
             </div>

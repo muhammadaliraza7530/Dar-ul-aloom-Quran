@@ -3,11 +3,11 @@
  * so every course card has a unique Islamic-themed look.
  */
 export type CourseVisual = {
-  gradient: string;         // Tailwind classes for the card accent strip
-  accentFrom: string;       // CSS colour for SVG gradient start
-  accentTo: string;         // CSS colour for SVG gradient end
+  gradient: string; // Tailwind classes for the card accent strip
+  accentFrom: string; // CSS colour for SVG gradient start
+  accentTo: string; // CSS colour for SVG gradient end
   pattern: "arabesque" | "star8" | "lattice" | "chevron" | "wave" | "diamond";
-  emoji: string;            // fallback emoji displayed when SVG not shown
+  emoji: string; // fallback emoji displayed when SVG not shown
 };
 
 export const courseVisuals: Record<string, CourseVisual> = {

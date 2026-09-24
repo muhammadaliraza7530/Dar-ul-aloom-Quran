@@ -310,17 +310,47 @@ export const benefits = [
 
 export const faqs = [
   ["Is the trial class free?", "Yes. You can book a free trial class before choosing a plan."],
-  ["Do you teach children and adults?", "Yes. Lessons are available for children, adults, and complete beginners."],
-  ["Do you have female teachers?", "Yes. Male and female teachers are available according to student needs."],
-  ["What countries do you teach in?", "We teach students online worldwide, including the UK, USA, Canada, Gulf countries, Australia, and Europe."],
-  ["Are classes one-to-one?", "Yes. One-to-one classes give every student focused attention and an individual pace."],
-  ["How do I pay the monthly fee?", "Payment can be made through Meezan Bank, Easypaisa/JazzCash, or NayaPay using the details on our Pricing page."],
+  [
+    "Do you teach children and adults?",
+    "Yes. Lessons are available for children, adults, and complete beginners.",
+  ],
+  [
+    "Do you have female teachers?",
+    "Yes. Male and female teachers are available according to student needs.",
+  ],
+  [
+    "What countries do you teach in?",
+    "We teach students online worldwide, including the UK, USA, Canada, Gulf countries, Australia, and Europe.",
+  ],
+  [
+    "Are classes one-to-one?",
+    "Yes. One-to-one classes give every student focused attention and an individual pace.",
+  ],
+  [
+    "How do I pay the monthly fee?",
+    "Payment can be made through Meezan Bank, Easypaisa/JazzCash, or NayaPay using the details on our Pricing page.",
+  ],
 ] as const;
 
 export const plans = [
-  { name: "Basic", features: ["3 classes per week", "One-to-one classes", "Quran reading", "Tajweed"] },
-  { name: "Standard", features: ["5 classes per week", "One-to-one classes", "Quran + Tajweed", "Islamic studies"] },
-  { name: "Premium", features: ["Customized schedule", "Quran + Tajweed", "Translation", "Islamic studies", "Progress monitoring"] },
+  {
+    name: "Basic",
+    features: ["3 classes per week", "One-to-one classes", "Quran reading", "Tajweed"],
+  },
+  {
+    name: "Standard",
+    features: ["5 classes per week", "One-to-one classes", "Quran + Tajweed", "Islamic studies"],
+  },
+  {
+    name: "Premium",
+    features: [
+      "Customized schedule",
+      "Quran + Tajweed",
+      "Translation",
+      "Islamic studies",
+      "Progress monitoring",
+    ],
+  },
 ];
 
 export const contact = {
@@ -337,7 +367,8 @@ export const blogPosts = [
     title: "Why Tajweed matters when you read the Quran",
     urdu: "تجوید کی اہمیت",
     date: "2026-08-14",
-    excerpt: "Tajweed protects the meaning of the words of Allah. Here is why every reader should learn it early.",
+    excerpt:
+      "Tajweed protects the meaning of the words of Allah. Here is why every reader should learn it early.",
     body: [
       "Tajweed is the set of rules that governs how each letter of the Quran is pronounced. Learning it early prevents mistakes that change meaning.",
       "Students who begin with Noorani Qaida and then move into a Tajweed course usually read far more confidently within a year.",
@@ -349,7 +380,8 @@ export const blogPosts = [
     title: "A realistic Hifz plan for busy students",
     urdu: "مصروف طلبہ کے لیے حفظ کا منصوبہ",
     date: "2026-07-29",
-    excerpt: "Memorizing the Quran is possible even with school or a full-time job. Consistency beats intensity.",
+    excerpt:
+      "Memorizing the Quran is possible even with school or a full-time job. Consistency beats intensity.",
     body: [
       "A small daily portion that never breaks is stronger than a large portion that stops after two weeks.",
       "We split every Hifz lesson into three parts: new memorization, recent revision, and old revision.",
@@ -361,7 +393,8 @@ export const blogPosts = [
     title: "Helping children build a love for the Quran",
     urdu: "بچوں میں قرآن کی محبت",
     date: "2026-07-05",
-    excerpt: "Encouragement, short sessions, and stories do more for young learners than long, strict lessons.",
+    excerpt:
+      "Encouragement, short sessions, and stories do more for young learners than long, strict lessons.",
     body: [
       "Children learn best in short, lively sessions with clear praise for effort rather than perfection.",
       "Stories of the Prophets and simple duas give young students something to look forward to each week.",

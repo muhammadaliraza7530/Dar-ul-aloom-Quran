@@ -78,15 +78,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Dar ul Uloom Online Quran Academy & Islamic Center" },
+      {
+        name: "description",
+        content:
+          "Dar ul Uloom Online Quran Academy & Islamic Center - Online Quran, Tajweed, Arabic and Islamic studies worldwide.",
+      },
       { name: "author", content: "Dar ul Uloom Online Quran Academy & Islamic Center" },
       { property: "og:site_name", content: "Dar ul Uloom Online Quran Academy & Islamic Center" },
+      { property: "og:title", content: "Dar ul Uloom Online Quran Academy & Islamic Center" },
+      {
+        property: "og:description",
+        content:
+          "Dar ul Uloom Online Quran Academy & Islamic Center - Online Quran, Tajweed, Arabic and Islamic studies worldwide.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Fira+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Fira+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
@@ -119,7 +134,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AcademyLayout><Outlet /></AcademyLayout>
+      <AcademyLayout>
+        <Outlet />
+      </AcademyLayout>
     </QueryClientProvider>
   );
 }

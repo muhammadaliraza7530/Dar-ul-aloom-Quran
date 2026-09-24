@@ -13,7 +13,10 @@ function AdminFeesPage() {
       </div>
       <div className="rounded-lg border border-border bg-card p-12 text-center">
         <p className="text-muted-foreground">Fee management interface goes here.</p>
-        <p className="text-sm mt-2">For now, records can be directly added via the Supabase dashboard in the `fee_records` table.</p>
+        <p className="text-sm mt-2">
+          For now, records can be directly added via the Supabase dashboard in the `fee_records`
+          table.
+        </p>
       </div>
     </div>
   );

@@ -28,8 +28,12 @@ function LessonsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-3xl text-primary">{ur ? "اسباق کا ریکارڈ" : "Lesson Records"}</h1>
-        <p className="mt-1 text-muted-foreground">{ur ? "آپ کے پڑھے گئے اسباق کی تفصیل" : "Details of lessons covered in classes"}</p>
+        <h1 className="font-display text-3xl text-primary">
+          {ur ? "اسباق کا ریکارڈ" : "Lesson Records"}
+        </h1>
+        <p className="mt-1 text-muted-foreground">
+          {ur ? "آپ کے پڑھے گئے اسباق کی تفصیل" : "Details of lessons covered in classes"}
+        </p>
       </div>
 
       <div className="grid gap-4">
@@ -45,17 +49,39 @@ function LessonsPage() {
               <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                 <div>
                   <h3 className="font-display text-lg text-primary">{lesson.topic || "Lesson"}</h3>
-                  <p className="text-sm text-gold-dark font-medium">{(lesson.enrollments as any)?.course_name || "-"}</p>
+                  <p className="text-sm text-gold-dark font-medium">
+                    {(lesson.enrollments as { course_name?: string } | null)?.course_name || "-"}
+                  </p>
                 </div>
                 <div className="text-sm text-muted-foreground bg-muted/50 px-3 py-1 rounded">
                   {new Date(lesson.lesson_date).toLocaleDateString()}
                 </div>
               </div>
               <div className="mt-4 grid gap-4 sm:grid-cols-2 text-sm">
-                <div><strong className="text-foreground">Surah/Chapter:</strong> <span className="text-muted-foreground">{lesson.surah_or_chapter || "-"}</span></div>
-                <div><strong className="text-foreground">Page/Ayah:</strong> <span className="text-muted-foreground">{lesson.page_or_ayah || "-"}</span></div>
-                {lesson.homework && <div className="sm:col-span-2"><strong className="text-foreground">Homework:</strong> <p className="mt-1 text-muted-foreground bg-secondary/50 p-2 rounded">{lesson.homework}</p></div>}
-                {lesson.teacher_note && <div className="sm:col-span-2"><strong className="text-foreground">Teacher Note:</strong> <p className="mt-1 text-muted-foreground bg-gold/5 border border-gold/20 p-2 rounded">{lesson.teacher_note}</p></div>}
+                <div>
+                  <strong className="text-foreground">Surah/Chapter:</strong>{" "}
+                  <span className="text-muted-foreground">{lesson.surah_or_chapter || "-"}</span>
+                </div>
+                <div>
+                  <strong className="text-foreground">Page/Ayah:</strong>{" "}
+                  <span className="text-muted-foreground">{lesson.page_or_ayah || "-"}</span>
+                </div>
+                {lesson.homework && (
+                  <div className="sm:col-span-2">
+                    <strong className="text-foreground">Homework:</strong>{" "}
+                    <p className="mt-1 text-muted-foreground bg-secondary/50 p-2 rounded">
+                      {lesson.homework}
+                    </p>
+                  </div>
+                )}
+                {lesson.teacher_note && (
+                  <div className="sm:col-span-2">
+                    <strong className="text-foreground">Teacher Note:</strong>{" "}
+                    <p className="mt-1 text-muted-foreground bg-gold/5 border border-gold/20 p-2 rounded">
+                      {lesson.teacher_note}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           ))

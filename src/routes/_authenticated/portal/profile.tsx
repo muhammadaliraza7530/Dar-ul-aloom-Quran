@@ -17,7 +17,11 @@ function ProfilePage() {
   const { data: admission } = useQuery({
     queryKey: ["admission-details"],
     queryFn: async () => {
-      const { data } = await supabase.from("student_admissions").select("*").eq("user_id", user.id).single();
+      const { data } = await supabase
+        .from("student_admissions")
+        .select("*")
+        .eq("user_id", user.id)
+        .single();
       return data;
     },
   });
@@ -26,7 +30,9 @@ function ProfilePage() {
     <div className="space-y-6 max-w-4xl">
       <div>
         <h1 className="font-display text-3xl text-primary">{ur ? "میری پروفائل" : "My Profile"}</h1>
-        <p className="mt-1 text-muted-foreground">{ur ? "آپ کی ذاتی اور داخلہ کی معلومات" : "Your personal and admission details"}</p>
+        <p className="mt-1 text-muted-foreground">
+          {ur ? "آپ کی ذاتی اور داخلہ کی معلومات" : "Your personal and admission details"}
+        </p>
       </div>
 
       <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
@@ -37,27 +43,39 @@ function ProfilePage() {
             </div>
             <div>
               <h2 className="text-xl font-bold text-foreground">{profile?.full_name}</h2>
-              <p className="text-sm font-medium text-gold-dark">{profile?.student_id || "ID Pending"}</p>
+              <p className="text-sm font-medium text-gold-dark">
+                {profile?.student_id || "ID Pending"}
+              </p>
             </div>
           </div>
         </div>
         <div className="p-6">
           <dl className="grid gap-x-4 gap-y-6 sm:grid-cols-2">
             <div>
-              <dt className="text-sm font-medium text-muted-foreground flex items-center gap-2"><Mail className="size-4"/> Email</dt>
+              <dt className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                <Mail className="size-4" /> Email
+              </dt>
               <dd className="mt-1 text-sm text-foreground">{profile?.email}</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-muted-foreground flex items-center gap-2"><Phone className="size-4"/> Phone</dt>
+              <dt className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                <Phone className="size-4" /> Phone
+              </dt>
               <dd className="mt-1 text-sm text-foreground">{profile?.phone}</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-muted-foreground flex items-center gap-2"><User className="size-4"/> Father / Guardian</dt>
+              <dt className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                <User className="size-4" /> Father / Guardian
+              </dt>
               <dd className="mt-1 text-sm text-foreground">{profile?.father_name || "-"}</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-muted-foreground flex items-center gap-2"><MapPin className="size-4"/> Location</dt>
-              <dd className="mt-1 text-sm text-foreground">{[profile?.city, profile?.country].filter(Boolean).join(", ") || "-"}</dd>
+              <dt className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                <MapPin className="size-4" /> Location
+              </dt>
+              <dd className="mt-1 text-sm text-foreground">
+                {[profile?.city, profile?.country].filter(Boolean).join(", ") || "-"}
+              </dd>
             </div>
             {admission && (
               <>
@@ -70,11 +88,17 @@ function ProfilePage() {
                 </div>
                 <div>
                   <dt className="text-sm font-medium text-muted-foreground">Preferred Time</dt>
-                  <dd className="mt-1 text-sm text-foreground">{admission.preferred_time || "-"}</dd>
+                  <dd className="mt-1 text-sm text-foreground">
+                    {admission.preferred_time || "-"}
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-sm font-medium text-muted-foreground">Date of Birth</dt>
-                  <dd className="mt-1 text-sm text-foreground">{admission.date_of_birth ? new Date(admission.date_of_birth).toLocaleDateString() : "-"}</dd>
+                  <dd className="mt-1 text-sm text-foreground">
+                    {admission.date_of_birth
+                      ? new Date(admission.date_of_birth).toLocaleDateString()
+                      : "-"}
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-sm font-medium text-muted-foreground">Gender</dt>

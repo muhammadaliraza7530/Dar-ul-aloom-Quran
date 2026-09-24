@@ -31,15 +31,12 @@ function ParentPortalPage() {
         .from("parent_student_links")
         .select("student_id")
         .eq("parent_id", user.id);
-      
+
       if (!links || links.length === 0) return [];
 
-      const studentIds = links.map(l => l.student_id);
-      
-      const { data: profiles } = await supabase
-        .from("profiles")
-        .select("*")
-        .in("id", studentIds);
+      const studentIds = links.map((l) => l.student_id);
+
+      const { data: profiles } = await supabase.from("profiles").select("*").in("id", studentIds);
 
       return profiles || [];
     },
@@ -59,9 +56,13 @@ function ParentPortalPage() {
 
       <main className="p-8 max-w-5xl mx-auto space-y-6">
         <div>
-          <h2 className="font-display text-xl text-primary">{ur ? "آپ کے بچے" : "Your Children"}</h2>
+          <h2 className="font-display text-xl text-primary">
+            {ur ? "آپ کے بچے" : "Your Children"}
+          </h2>
           <p className="text-muted-foreground">
-            {ur ? "بچوں کی تعلیمی رپورٹ اور حاضری دیکھیں۔" : "View progress and attendance for your linked children."}
+            {ur
+              ? "بچوں کی تعلیمی رپورٹ اور حاضری دیکھیں۔"
+              : "View progress and attendance for your linked children."}
           </p>
         </div>
 
@@ -76,9 +77,13 @@ function ParentPortalPage() {
             {children?.map((child) => (
               <div key={child.id} className="rounded-lg border border-border bg-card p-6 shadow-sm">
                 <h3 className="font-display text-xl text-primary">{child.full_name}</h3>
-                <p className="text-sm text-gold-dark font-medium">{child.student_id || "ID Pending"}</p>
+                <p className="text-sm text-gold-dark font-medium">
+                  {child.student_id || "ID Pending"}
+                </p>
                 <div className="mt-4 pt-4 border-t border-border">
-                  <Button className="w-full" variant="outline">View Full Report</Button>
+                  <Button className="w-full" variant="outline">
+                    View Full Report
+                  </Button>
                 </div>
               </div>
             ))}

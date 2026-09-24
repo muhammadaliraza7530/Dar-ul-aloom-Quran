@@ -45,7 +45,13 @@ function IslamicPattern({ pattern, id }: { pattern: string; id: string }) {
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <pattern id={id} x="0" y="0" width="32" height="16" patternUnits="userSpaceOnUse">
-              <path d="M0 16 L16 0 L32 16" stroke="white" strokeWidth="0.6" fill="none" opacity="0.15" />
+              <path
+                d="M0 16 L16 0 L32 16"
+                stroke="white"
+                strokeWidth="0.6"
+                fill="none"
+                opacity="0.15"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill={`url(#${id})`} />
@@ -56,7 +62,13 @@ function IslamicPattern({ pattern, id }: { pattern: string; id: string }) {
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <pattern id={id} x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-              <polygon points="14,2 26,14 14,26 2,14" stroke="white" strokeWidth="0.5" fill="none" opacity="0.15" />
+              <polygon
+                points="14,2 26,14 14,26 2,14"
+                stroke="white"
+                strokeWidth="0.5"
+                fill="none"
+                opacity="0.15"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill={`url(#${id})`} />
@@ -67,7 +79,13 @@ function IslamicPattern({ pattern, id }: { pattern: string; id: string }) {
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <pattern id={id} x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse">
-              <path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="white" strokeWidth="0.6" fill="none" opacity="0.15" />
+              <path
+                d="M0 10 Q10 0 20 10 Q30 20 40 10"
+                stroke="white"
+                strokeWidth="0.6"
+                fill="none"
+                opacity="0.15"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill={`url(#${id})`} />
@@ -160,11 +178,7 @@ export function CourseCard({
                 </Link>
               </Button>
               <Button asChild variant="outline" size="sm" className="w-full">
-                <a
-                  href="https://wa.me/923298503412"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href="https://wa.me/923298503412" target="_blank" rel="noreferrer">
                   Free trial
                 </a>
               </Button>
@@ -232,7 +246,11 @@ export function FeaturedCourseCard({
                 View course
               </Link>
             </Button>
-            <Button asChild size="sm" className="border border-white/30 bg-white/10 text-white hover:bg-white/20">
+            <Button
+              asChild
+              size="sm"
+              className="border border-white/30 bg-white/10 text-white hover:bg-white/20"
+            >
               <a href="https://wa.me/923298503412" target="_blank" rel="noreferrer">
                 <MessageCircle className="size-4" />
                 Free trial
