@@ -109,7 +109,7 @@ function TeachersPage() {
           <div className="mt-16">
             <SectionHeading
               eyebrow="Senior female teacher"
-              title="Aleema Laiba Habib"
+              title="Allima Yashfa Habib"
               urdu="عالمہ یشفاء حبیب"
             />
             <article className="mx-auto grid max-w-4xl overflow-hidden border border-border bg-card shadow-sm md:grid-cols-[340px_1fr]">
