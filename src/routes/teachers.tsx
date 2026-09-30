@@ -110,7 +110,7 @@ function TeachersPage() {
             <SectionHeading
               eyebrow="Senior female teacher"
               title="Aleema Laiba Habib"
-              urdu="عالمہ لائبہ حبیب"
+              urdu="عالمہ یشفاء حبیب"
             />
             <article className="mx-auto grid max-w-4xl overflow-hidden border border-border bg-card shadow-sm md:grid-cols-[340px_1fr]">
               <div className="bg-primary p-6">
