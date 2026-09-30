@@ -126,7 +126,7 @@ function TeachersPage() {
                 <p className="text-sm font-bold uppercase tracking-[0.15em] text-gold-dark">
                   {ur ? "سینئر معلمہ و عالمہ" : "Senior Female Teacher & Aleema"}
                 </p>
-                <h3 className="mt-2 font-display text-2xl text-primary">Aleema Laiba Habib Quran accadmy</h3>
+                <h3 className="mt-2 font-display text-2xl text-primary">Allima Yashfa Habib</h3>
                 <h2 className="mt-3 font-display text-3xl text-primary">
                   {ur
                     ? "قرآن · تجوید · درس نظامی و دینی تعلیم"
