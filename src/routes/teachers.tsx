@@ -161,7 +161,7 @@ function TeachersPage() {
                       rel="noreferrer"
                     >
                       <MessageCircle className="size-4" />
-                      {ur ? "عالمہ لائبہ حبیب سے رابطہ کریں" : "Contact Aleema Laiba Habib"}
+                      {ur ? "عالمہ لائبہ حبیب سے رابطہ کریں" : "Contact Allima Yashfa Habib"}
                     </a>
                   </Button>
                   <a
