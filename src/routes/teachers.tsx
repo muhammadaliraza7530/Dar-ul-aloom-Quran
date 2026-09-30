@@ -126,13 +126,13 @@ function TeachersPage() {
                 <p className="text-sm font-bold uppercase tracking-[0.15em] text-gold-dark">
                   {ur ? "سینئر معلمہ و عالمہ" : "Senior Female Teacher & Aleema"}
                 </p>
-                <h3 className="mt-2 font-display text-2xl text-primary">Aleema Laiba Habib</h3>
+                <h3 className="mt-2 font-display text-2xl text-primary">Aleema Laiba Habib Quran accadmy</h3>
                 <h2 className="mt-3 font-display text-3xl text-primary">
                   {ur
                     ? "قرآن · تجوید · درس نظامی و دینی تعلیم"
                     : "Quran · Tajweed · Islamic Studies"}
                 </h2>
-                <p className="mt-4 font-urdu text-xl text-gold-dark">عالمہ لائبہ حبیب</p>
+                <p className="mt-4 font-urdu text-xl text-gold-dark">عالمہ یشفاء حبیب</p>
                 <div className="mt-8 space-y-5 text-sm text-muted-foreground">
                   <p className="flex gap-3">
                     <BookOpenCheck className="size-5 shrink-0 text-gold-dark" />
